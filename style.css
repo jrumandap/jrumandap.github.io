@@ -7,6 +7,7 @@ body {
     align-items: center;
     justify-content: center;
     min-height: 100vh;
+    overflow-x: hidden;
 }
 
 .container {
@@ -253,7 +254,7 @@ h2 {
 }
 
 #portfolio {
-    padding: 40px 20px;
+    padding: 40px;
     text-align: start;
 }
 
@@ -261,36 +262,46 @@ h2 {
     font-size: 2rem;
     margin-bottom: 10px;
     color: #0f172a;
+    margin-top: 0;
 }
 
 #portfolio .section-subtitle {
     font-size: 1rem;
-    margin-bottom: 30px;
+    margin-bottom: 13px;
     color: #555;
 }
 
 .portfolio-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: start;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 20px;
+    margin-top: 0;
+    width: 100%;
+    max-width: 100%;
 }
 
 .portfolio-card-link {
     text-decoration: none;
-    color: inherit;        
+    color: inherit;
+    display: block;
 }
 
 .portfolio-card {
-    width: 180px;
     background: #ffffff;
     color: #1e293b;
-    border: 2px solid #000; 
+    border: 2px solid #000;
     border-radius: 10px;
-    padding: 15px;
+    padding: 5px;
     text-align: start;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
+    height: 100%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    overflow: hidden;
 }
 
 .portfolio-card p {
@@ -298,71 +309,165 @@ h2 {
     font-weight: 600;
     font-size: 0.95rem;
     color: #1e293b;
+    text-align: left;
 }
 
 .portfolio-card button {
     background-color: #000;
     color: #fff;
     border: none;
-    padding: 6px 12px;
-    border-radius: 5px;
+    padding: 10px 15px;
+    border-radius: 10px;
     cursor: pointer;
     margin-top: 10px;
-    font-size: 0.9rem;
+    font-size: 1rem;
     transition: background 0.3s ease;
 }
 
 .portfolio-card button:hover {
-    background-color: #0ea5e9; 
+    background-color: #0ea5e9;
 }
 
 .portfolio-card-link:hover .portfolio-card {
     transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
+.portfolio-card-img {
+    width: 205px; 
+    object-fit: cover;
+    border-radius: 5px; 
+    flex-shrink: 0;
+}
 
-@media (max-width: 992px) {
+.portfolio-card-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.portfolio-card-details p {
+    margin: 2px 0;
+}
+
+@media (max-width: 1024px) {
+
+    body {
+        display: block;
+    }
+
     .container {
         flex-direction: column;
         align-items: center;
+        gap: 25px;
+        padding: 20px;
     }
-    .card-box,
-    .content-box {
+
+    .card-box {
         width: 100%;
-        max-width: 100%;
+        max-width: 500px;
         flex: none;
     }
+
     .content-box {
+        width: 100%;
         padding: 30px;
     }
+
+    .portfolio-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+
+    .container {
+        flex-direction: column;
+        align-items: center;
+        padding: 15px;
+        gap: 20px;
+    }
+
+    .card-box {
+        width: 100%;
+    }
+
+    .content-box {
+        padding: 25px;
+    }
+
+    .contact-item {
+        min-width: 100%;
+    }
+
+    /* 🔥 FIX PORTFOLIO MOBILE LOOK */
+    .portfolio-container {
+        grid-template-columns: 1fr;
+    }
+
     .portfolio-card {
-        width: 160px;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
         padding: 12px;
     }
+
+    .portfolio-card-img {
+        width: 100%;
+        max-width: 320px;
+        height: 180px;
+        object-fit: cover;
+        border-radius: 8px;
+    }
+
+    .portfolio-card-details {
+        align-items: center;
+        text-align: center;
+        width: 100%;
+    }
+
+    .portfolio-card p {
+        text-align: center;
+    }
+
     .portfolio-card button {
-        padding: 5px 10px;
-        font-size: 0.85rem;
+        width: 100%;
+        max-width: 200px;
     }
 }
 
 @media (max-width: 480px) {
-    .social-links-horizontal a {
-        width: 100%;
-        justify-content: center;
+
+    h2 {
+        font-size: 1.3rem;
     }
-    .card-box {
-        padding: 30px 15px;
+
+    .profile {
+        width: 100px;
+        height: 100px;
     }
-    .portfolio-container {
-        flex-direction: column;
-        align-items: center;
+
+    .content-box {
+        padding: 20px;
     }
-    .portfolio-card {
-        width: 90%; 
-        max-width: 220px;
+
+    .menu a {
+        font-size: 0.85rem;
+        padding: 12px 15px;
     }
+
+    #portfolio {
+        padding: 20px;
+    }
+
+    /* 🔥 EXTRA MOBILE FIX */
+    .portfolio-card-img {
+        height: 160px;
+    }
+
     .portfolio-card button {
         width: 100%;
+        font-size: 0.9rem;
     }
 }
