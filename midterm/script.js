@@ -3,10 +3,13 @@ const char = [
             { name: "Vegeta", img: "https://dragonball-api.com/characters/vegeta_normal.webp" },
             { name: "Gohan", img: "https://dragonball-api.com/characters/gohan.webp" },
             { name: "Piccolo", img: "https://dragonball-api.com/characters/picolo_normal.webp" },
-            { name: "Freezer", img: "https://dragonball-api.com/characters/Freezer.webp" },
-            { name: "Celula", img: "https://dragonball-api.com/characters/celula.webp" },
+            { name: "Frieza", img: "https://dragonball-api.com/characters/Freezer.webp" },
+            { name: "Cell", img: "https://dragonball-api.com/characters/celula.webp" },
             { name: "Bills", img: "https://dragonball-api.com/characters/Beerus_DBS_Broly_Artwork.webp" },
             { name: "Trunks", img: "https://dragonball-api.com/characters/Trunks_Buu_Artwork.webp" },
+            { name: "Android 17", img: "https://dragonball-api.com/characters/17_Artwork.webp" },
+            { name: "Majin Buu", img: "https://dragonball-api.com/characters/BuuGordo_Universo7.webp" },
+            
         ];
 
         let start = 0;
@@ -29,11 +32,36 @@ const char = [
                 const c = char[index];
 
                 container.innerHTML += `
-            <div style="width:250px; background:#111; color:white; border:2px solid gold; border-radius:10px;">
-                <img src="${c.img}" style="height:350px; width:100%; object-fit:contain;">
-                <h5 style="color:gold; margin:10px 0;">${c.name}</h5>
-            </div>
-        `;
+                <div style="
+                    width:250px;
+                    background:#111;
+                    color:white;
+                    border:2px solid gold;
+                    border-radius:10px;
+                    position:relative;
+                    transition:0.3s;
+                "
+                onmouseover="
+                    this.querySelector('img').style.transform='scale(1.25)';
+                    this.style.boxShadow='0 0 20px gold';
+                "
+                onmouseout="
+                    this.querySelector('img').style.transform='scale(1)';
+                    this.style.boxShadow='none';
+                "
+                >
+                    <img src="${c.img}" style="
+                        height:350px;
+                        width:100%;
+                        object-fit:contain;
+                        transition:0.3s;
+                        position:relative;
+                        z-index:2;
+                    ">
+                    
+                    <h5 style="color:gold; margin:10px 0;">${c.name}</h5>
+                </div>
+                `;
             }
         }
 
@@ -53,3 +81,4 @@ const char = [
         window.addEventListener("load", () => {
             render();
         });
+        
