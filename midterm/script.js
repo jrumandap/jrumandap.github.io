@@ -78,7 +78,59 @@ const char = [
 
         window.addEventListener("resize", render);
 
+        function showHome() { showSection(homeView); }
+
+        function renderPlanets() {
+            if (!planetsContainer || !planets) return;
+
+            planetsContainer.innerHTML = `
+                <div class="row g-4 justify-content-center">
+                    ${planets.map(p => `
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center">
+
+                            <div class="planet-card p-3 border border-warning rounded bg-dark text-center h-100"
+                                style="cursor:pointer; transition:0.3s; max-width:260px; width:100%;">
+
+                                <img src="${p.image}" 
+                                    class="img-fluid"
+                                    style="height:140px; object-fit:contain; transition:0.3s;">
+
+                                <h5 class="text-warning mt-2">${p.name}</h5>
+                                <p class="small text-secondary">
+                                    ${p.description ?? ""}
+                                </p>
+
+                            </div>
+
+                        </div>
+                    `).join("")}
+                </div>
+            `;
+
+            addPlanetHover();
+        }
+
+
+        function addPlanetHover() {
+            document.querySelectorAll(".planet-card").forEach(card => {
+
+                card.addEventListener("mouseenter", () => {
+                    card.style.transform = "scale(1.06)";
+                    card.style.boxShadow = "0 0 25px rgba(255,204,0,0.7)";
+                });
+
+                card.addEventListener("mouseleave", () => {
+                    card.style.transform = "scale(1)";
+                    card.style.boxShadow = "none";
+                });
+
+            });
+        }
+
+        
         window.addEventListener("load", () => {
             render();
+            renderPlanets();
         });
+
         
