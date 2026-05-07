@@ -13,7 +13,7 @@
 
     <nav class="navbar navbar-expand-lg border-bottom border-secondary px-3 py-2 sticky-top bg-black">
 
-        <a class="navbar-brand fw-bold ms-lg-5 fs-4" style="background: linear-gradient(90deg,#ffcc00,#ff7a00,#ff2a00);
+        <a class="navbar-brand fw-bold fs-3 mx-auto mx-lg-0 text-center" style="background: linear-gradient(90deg,#ffcc00,#ff7a00,#ff2a00);
                -webkit-background-clip:text;
                background-clip:text;
                -webkit-text-fill-color:transparent;
@@ -21,7 +21,9 @@
             DRAGONBALL
         </a>
 
-        <ul class="navbar-nav ms-auto me-lg-5 d-flex flex-row gap-4">
+        <ul class="navbar-nav d-flex flex-row flex-nowrap 
+           justify-content-center justify-content-lg-end 
+           align-items-center w-100 gap-4 mt-1 mt-lg-0">
 
             <li><a class="nav-link text-light fw-bold" href="#" onclick="setActive(this); showHome()">Home</a></li>
             <li><a class="nav-link text-light fw-bold" href="#"
@@ -46,12 +48,12 @@
                 <input type="range" id="seekBar" value="0" style="width:150px;">
 
                 <button onclick="bgVideo.play()"
-                    style="padding:6px 14px; background:#ffcc00; border:none; font-weight:bold; border-radius:6px;">
+                    style="padding:6px 10px; background:#ffcc00; border:none; font-weight:bold; border-radius:6px;">
                     ▶ Play
                 </button>
 
                 <button onclick="bgVideo.pause()"
-                    style="padding:6px 14px; background:#ff2a00; color:white; border:none; font-weight:bold; border-radius:6px;">
+                    style="padding:6px 10px; background:#ff2a00; color:white; border:none; font-weight:bold; border-radius:6px;">
                     ⏸ Pause
                 </button>
             </div>

@@ -1,7 +1,12 @@
         function getVisibleCount() {
-            if (window.innerWidth <= 600) return 1;   
-            if (window.innerWidth <= 992) return 2;   
-            return 3;                                 
+
+            const width = window.innerWidth;
+
+            if (width <= 480) return 1;
+            if (width <= 768) return 2;
+            if (width <= 1024) return 3;
+
+            return 4;
         }
 
         let start = 0;
