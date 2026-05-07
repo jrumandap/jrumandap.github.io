@@ -26,7 +26,8 @@
             <li><a class="nav-link text-light fw-bold" href="#" onclick="setActive(this); showHome()">Home</a></li>
             <li><a class="nav-link text-light fw-bold" href="#"
                     onclick="setActive(this); showCharacters()">Characters</a></li>
-            <li><a class="nav-link text-light fw-bold" href="#" onclick="setActive(this); showStats()">Stats</a></li>
+            <li><a class="nav-link text-light fw-bold" href="#" onclick="setActive(this); showPlanets()">Planets</a>
+            </li>
 
         </ul>
 
@@ -34,39 +35,196 @@
 
     <section id="homeView" style="opacity:1; transition:0.4s;">
 
-         <section class="container text-center py-5">
-            <h2 class="text-warning mb-4">Featured Characters</h2>
+        <section class="container-fluid p-0 position-relative mb-5">
 
-            <div style="display:flex; justify-content:center; align-items:center; gap:20px;">
+            <video id="bgVideo" class="w-100" style="max-height:600px; object-fit:cover;">
+                <source src="image-video/Dragon_Ball_Z__Kakarot_Official.mp4" type="video/mp4">
+            </video>
 
-                <button onclick="prevChar()"
-                    style="font-size:150px; background:none; border:none; color:gold; cursor:pointer;">
-                    ‹
+
+            <div style="position:absolute; bottom:30px; right:20px; display:flex; gap:10px;">
+                <input type="range" id="seekBar" value="0" style="width:150px;">
+
+                <button onclick="bgVideo.play()"
+                    style="padding:6px 14px; background:#ffcc00; border:none; font-weight:bold; border-radius:6px;">
+                    ▶ Play
                 </button>
 
-                <div id="charWindow" style="display:flex; gap:15px; justify-content:center;"></div>
-
-                <button onclick="nextChar()"
-                    style="font-size:150px; background:none; border:none; color:gold; cursor:pointer;">
-                    ›
+                <button onclick="bgVideo.pause()"
+                    style="padding:6px 14px; background:#ff2a00; color:white; border:none; font-weight:bold; border-radius:6px;">
+                    ⏸ Pause
                 </button>
-
             </div>
         </section>
 
-        <div class="container py-4">
-            <h3 class="text-center text-warning mb-4">Planets</h3>
-            <div class="row g-4" id="planetsContainer"></div>
+        <section class="container text-center py-5">
+            <h2 class="text-warning mb-4">Featured Characters</h2>
+
+            <div style="display:flex; justify-content:center; align-items:center; gap:20px;">
+                <button onclick="prevChar()"
+                    style="font-size:100px; background:none; border:none; color:gold; cursor:pointer;">
+                    ‹
+                </button>
+
+                <div id="char-carousel-window"
+                    style="display:flex; gap:15px; justify-content:center; min-height: 300px;">
+                </div>
+
+                <button onclick="nextChar()"
+                    style="font-size:100px; background:none; border:none; color:gold; cursor:pointer;">
+                    ›
+                </button>
+            </div>
+        </section>
+
+        <style>
+            .char-card {
+                transition: transform 0.3s ease, filter 0.3s ease;
+                cursor: pointer;
+                overflow: visible;
+            }
+
+            .char-card:hover {
+                transform: scale(1.15);
+                filter: brightness(1.1);
+                z-index: 10;
+            }
+
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                    transform: translateY(10px);
+                }
+
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        </style>
+    </section>
+
+    <section id="characterView"
+        style="display:none; opacity:0; transition:0.4s; background: radial-gradient(circle at top, #1a1a1a 0%, #000000 100%);"
+        class="container-fluid px-3 px-md-4 px-lg-5 py-5 text-white">
+
+        <div class="mb-5 position-relative">
+            <img src="image-video/Dragon balls.png" class="w-100 rounded shadow-lg"
+                style="height: clamp(200px, 40vw, 400px); object-fit: cover; border: 3px solid #ffcc00;">
         </div>
 
-    </section>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-        crossorigin="anonymous">
-    </script>
+        <div class="text-center mb-4">
+            <h2 class="fw-bold text-warning" style="letter-spacing: 3px;">
+                CHARACTERS
+            </h2>
+        </div>
 
+        <div class="row g-3 mb-5 justify-content-center align-items-center">
+
+            <div class="col-12 col-md-4">
+                <select id="raceFilter" class="form-select bg-dark text-white border-warning shadow-none"
+                    style="border-radius: 10px; height: 50px;" onchange="applyFilter()">
+                    <option value="all">All Races</option>
+                    <option value="Human">Human</option>
+                    <option value="Saiyan">Saiyan</option>
+                    <option value="Namekian">Namekian</option>
+                    <option value="Majin">Majin</option>
+                    <option value="Frieza Race">Frieza Race</option>
+                    <option value="Android">Android</option>
+                    <option value="Jiren Race">Jiren Race</option>
+                    <option value="God">God</option>
+                    <option value="Angel">Angel</option>
+                    <option value="Evil">Evil</option>
+                    <option value="Nucleico">Nucleico</option>
+                    <option value="Nucleico benigno">Nucleico benigno</option>
+                    <option value="Unknown">Unknown</option>
+                </select>
+            </div>
+
+            <div class="col-12 col-md-6">
+                <div class="input-group shadow-sm">
+                    <input id="searchInput" class="form-control bg-dark text-white border-warning shadow-none"
+                        style="border-radius: 10px 0 0 10px; height: 50px; border-right: none;"
+                        placeholder="Try typing 'G'..." onkeyup="applyFilter()">
+
+                    <button class="btn btn-warning fw-bold px-4" style="border-radius: 0 10px 10px 0;"
+                        onclick="applyFilter()">
+                        <i class="fas fa-search"></i> SEARCH
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-4 justify-content-center" id="charContainer"></div>
+
+        <div id="noResult" class="text-center py-5 w-100" style="display:none;">
+            <div class="p-5 rounded-4" style="background: rgba(255, 204, 0, 0.05); border: 1px dashed #ffcc00;">
+                <h3 class="text-warning fw-bold">NO CHARACTER FOUND</h3>
+            </div>
+        </div>
+
+        <div class="modal fade" id="characterModal" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered modal-xl"> 
+                <div class="modal-content bg-black text-white border-0"
+                    style="border-radius: 30px; box-shadow: 0 0 50px rgba(255, 204, 0, 0.3);" id="modalContent">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="planetsView"
+        style="display: none; background-color: #0b0e14; padding: 4rem 0; min-height: 100vh; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+        <div class="container">
+            <h2
+                style="text-align: center; color: #d4af37; letter-spacing: 3px; font-weight: 800; margin-bottom: 3rem; text-transform: uppercase;">
+                ALL PLANETS
+            </h2>
+
+            <div class="row g-3 justify-content-center" style="margin-bottom: 3.5rem;">
+                <div class="col-md-5">
+                    <input type="text" id="planetSearch" placeholder="Search Planet Name..."
+                        style="background-color: #161b22; border: 1px solid #30363d; color: white; border-radius: 10px; padding: 14px; width: 100%; outline: none; box-shadow: inset 0 2px 4px rgba(0,0,0,0.3);">
+                </div>
+                <div class="col-md-3">
+                    <select id="statusFilter"
+                        style="background-color: #161b22; border: 1px solid #30363d; color: white; border-radius: 10px; padding: 14px; width: 100%; outline: none; cursor: pointer; appearance: none;">
+                        <option value="all">All Systems</option>
+                        <option value="active">Active</option>
+                        <option value="destroyed">Destroyed</option>
+                    </select>
+                </div>
+            </div>
+
+            <div id="planets-list" class="row g-4">
+                <div style="color: #d4af37; text-align: center; width: 100%;">Accessing Galactic Database...</div>
+            </div>
+        </div>
+    </section>
+
+    <footer class=""
+        style="background:#000; color:#fff; text-align:center; padding:20px; font-size:14px; letter-spacing:1px; border-top:2px solid orange; margin-top:auto; font-family: sans-serif;">
+
+        <div
+            style="display: flex; justify-content: center; gap: 30px; margin-bottom: 10px; font-weight: bold; text-transform: uppercase;">
+            <span style="color: #ffcc00; text-shadow: 0 0 5px rgba(255, 204, 0, 0.4);">
+                Characters: <span style="color: #fff; font-size: 16px;">58</span>
+            </span>
+            <span style="color: orange;">|</span>
+            <span style="color: #ff4400; text-shadow: 0 0 5px rgba(255, 68, 0, 0.4);">
+                Planets: <span style="color: #fff; font-size: 16px;">20</span>
+            </span>
+        </div>
+
+        <p style="margin: 5px; text-shadow:0 0 3px orange; opacity: 0.8;">
+            © 2026 Dragon Ball Website | For Academic Purposes Only
+        </p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous">
+        </script>
+
+    <script src="characters.js"></script>
     <script src="script.js"></script>
-    <script src="planets.js"></script>
 </body>
 
 </html>
