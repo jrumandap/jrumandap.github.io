@@ -12,27 +12,33 @@
 <body class="bg-black text-white m-0">
 
     <nav class="navbar navbar-expand-lg bg-black border-bottom border-secondary px-3 py-2 sticky-top">
+        <div class="container-fluid d-flex flex-column flex-md-row align-items-center">
 
-        <a class="navbar-brand fw-bold fs-3 text-center text-md-start mx-auto mx-md-0" style="background: linear-gradient(90deg,#ffcc00,#ff7a00,#ff2a00);
-               -webkit-background-clip:text;
-               background-clip:text;
-               -webkit-text-fill-color:transparent;
-               text-shadow:0 0 10px rgba(255,140,0,0.4);">
-            DRAGONBALL
-        </a>
+            <!-- Brand / Logo -->
+            <a class="navbar-brand fw-bold fs-3 mb-2 mb-md-0" href="#" style="background: linear-gradient(90deg,#ffcc00,#ff7a00,#ff2a00);
+                  -webkit-background-clip:text;
+                  background-clip:text;
+                  -webkit-text-fill-color:transparent;
+                  text-shadow:0 0 10px rgba(255,140,0,0.4);">
+                DRAGONBALL
+            </a>
 
-        <ul class= "navbar-nav d-flex flex-row gap-4 m-0
-                   justify-content-center justify-content-md-end
-                   w-100 w-md-auto mt-2 mt-md-0">
+            <!-- Navigation Links -->
+            <ul class="navbar-nav d-flex flex-row gap-3 gap-md-4 ms-md-auto justify-content-center">
+                <li class="nav-item">
+                    <a class="nav-link text-light fw-bold px-2" href="#" onclick="setActive(this); showHome()">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light fw-bold px-2" href="#"
+                        onclick="setActive(this); showCharacters()">Characters</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light fw-bold px-2" href="#"
+                        onclick="setActive(this); showPlanets()">Planets</a>
+                </li>
+            </ul>
 
-            <li><a class="nav-link text-light fw-bold" href="#" onclick="setActive(this); showHome()">Home</a></li>
-            <li><a class="nav-link text-light fw-bold" href="#"
-                    onclick="setActive(this); showCharacters()">Characters</a></li>
-            <li><a class="nav-link text-light fw-bold" href="#" onclick="setActive(this); showPlanets()">Planets</a>
-            </li>
-
-        </ul>
-
+        </div>
     </nav>
 
     <section id="homeView" style="opacity:1; transition:0.4s;">
@@ -166,7 +172,7 @@
         </div>
 
         <div class="modal fade" id="characterModal" tabindex="-1">
-            <div class="modal-dialog modal-dialog-centered modal-xl"> 
+            <div class="modal-dialog modal-dialog-centered modal-xl">
                 <div class="modal-content bg-black text-white border-0"
                     style="border-radius: 30px; box-shadow: 0 0 50px rgba(255, 204, 0, 0.3);" id="modalContent">
                 </div>
