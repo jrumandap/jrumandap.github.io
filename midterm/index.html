@@ -9,12 +9,55 @@
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
 
-<body class="bg-black text-white m-0">
+<body id="body" data-bs-theme="dark" class="m-0" style="background-color: black; transition: 0.4s;">
+
+    <style>
+        #modeBtn {
+            background-color: black;
+            color: white;
+            border: 2px solid yellow;
+            border-radius: 50px;
+            padding: 5px 10px;
+            font-weight: bold;
+            cursor: pointer;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        /* Hover effect para maging gray (#9ca3af) pag itinapat ang mouse */
+        #modeBtn:hover {
+            background-color: white;
+            color: black;
+        }
+
+        .char-card {
+            transition: transform 0.3s ease, filter 0.3s ease;
+            cursor: pointer;
+            overflow: visible;
+        }
+
+        .char-card:hover {
+            transform: scale(1.15);
+            filter: brightness(1.1);
+            z-index: 10;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
 
     <nav class="navbar navbar-expand-lg bg-black border-bottom border-secondary px-3 py-2 sticky-top">
         <div class="container-fluid d-flex flex-column flex-md-row align-items-center">
 
-            <!-- Brand / Logo -->
             <a class="navbar-brand fw-bold fs-3 mb-2 mb-md-0" href="#" style="background: linear-gradient(90deg,#ffcc00,#ff7a00,#ff2a00);
                   -webkit-background-clip:text;
                   background-clip:text;
@@ -23,7 +66,6 @@
                 DRAGONBALL
             </a>
 
-            <!-- Navigation Links -->
             <ul class="navbar-nav d-flex flex-row gap-3 gap-md-4 ms-md-auto justify-content-center">
                 <li class="nav-item">
                     <a class="nav-link text-light fw-bold px-2" href="#" onclick="setActive(this); showHome()">Home</a>
@@ -35,6 +77,9 @@
                 <li class="nav-item">
                     <a class="nav-link text-light fw-bold px-2" href="#"
                         onclick="setActive(this); showPlanets()">Planets</a>
+                </li>
+                <li>
+                    <button id="modeBtn" onclick="switchTheme()">Light Mode</button>
                 </li>
             </ul>
 
@@ -84,37 +129,10 @@
                 </button>
             </div>
         </section>
-
-        <style>
-            .char-card {
-                transition: transform 0.3s ease, filter 0.3s ease;
-                cursor: pointer;
-                overflow: visible;
-            }
-
-            .char-card:hover {
-                transform: scale(1.15);
-                filter: brightness(1.1);
-                z-index: 10;
-            }
-
-            @keyframes fadeIn {
-                from {
-                    opacity: 0;
-                    transform: translateY(10px);
-                }
-
-                to {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
-            }
-        </style>
     </section>
 
-    <section id="characterView"
-        style="display:none; opacity:0; transition:0.4s; background: radial-gradient(circle at top, #1a1a1a 0%, #000000 100%);"
-        class="container-fluid px-3 px-md-4 px-lg-5 py-5 text-white">
+    <section id="characterView" class="container-fluid py-4 py-md-5 text-white"
+        style="display: none; opacity: 0; transition: 0.4s; background: radial-gradient(circle at top, #1a1a1a 0%, #000000 100%); min-height: 100vh;">
 
         <div class="mb-5 position-relative">
             <img src="image-video/Dragon balls.png" class="w-100 rounded shadow-lg"
@@ -129,7 +147,7 @@
 
         <div class="row g-3 mb-5 justify-content-center align-items-center">
 
-            <div class="col-12 col-md-4">
+            <div class="col-12 col-md-3">
                 <select id="raceFilter" class="form-select bg-dark text-white border-warning shadow-none"
                     style="border-radius: 10px; height: 50px;" onchange="applyFilter()">
                     <option value="all">All Races</option>
@@ -153,14 +171,15 @@
                 <div class="input-group shadow-sm">
                     <input id="searchInput" class="form-control bg-dark text-white border-warning shadow-none"
                         style="border-radius: 10px 0 0 10px; height: 50px; border-right: none;"
-                        placeholder="Try typing 'G'..." onkeyup="applyFilter()">
+                        placeholder="Search character name..." onkeyup="applyFilter()">
 
-                    <button class="btn btn-warning fw-bold px-4" style="border-radius: 0 10px 10px 0;"
+                    <button class="btn btn-warning fw-bold px-4" style="border-radius: 0 10px 10px 0; height: 50px;"
                         onclick="applyFilter()">
                         <i class="fas fa-search"></i> SEARCH
                     </button>
                 </div>
             </div>
+
         </div>
 
         <div class="row g-4 justify-content-center" id="charContainer"></div>
@@ -181,7 +200,7 @@
     </section>
 
     <section id="planetsView"
-        style="display: none; background-color: #0b0e14; padding: 4rem 0; min-height: 100vh; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+        style="display: none; background-color: black; padding: 4rem 0; min-height: 100vh; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
         <div class="container">
             <h2
                 style="text-align: center; color: #d4af37; letter-spacing: 3px; font-weight: 800; margin-bottom: 3rem; text-transform: uppercase;">
@@ -204,7 +223,7 @@
             </div>
 
             <div id="planets-list" class="row g-4">
-                <div style="color: #d4af37; text-align: center; width: 100%;">Accessing Galactic Database...</div>
+                <div style="color: #d4af37; text-align: center; width: 100%;">Accessing Database...</div>
             </div>
         </div>
     </section>
@@ -230,6 +249,38 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous">
         </script>
+
+    <script>
+        var mode = "dark";
+        var body = document.getElementById("body");
+        var modeBtn = document.getElementById("modeBtn");
+        var charView = document.getElementById("characterView");
+        var planView = document.getElementById("planetsView");
+
+        function switchTheme() {
+            if (mode === "dark") {
+                mode = "light";
+                modeBtn.innerHTML = "Dark Mode";
+
+                body.style.backgroundColor = "white";
+                body.style.color = "black";
+
+                if (charView) charView.style.background = "white";
+                if (planView) planView.style.backgroundColor = "white";
+            } else {
+                mode = "dark";
+                modeBtn.innerHTML = "Light Mode";
+
+                body.style.backgroundColor = "black";
+                body.style.color = "white";
+
+                if (charView) charView.style.background = "black";
+                if (planView) planView.style.backgroundColor = "black";
+            }
+
+            body.setAttribute("data-bs-theme", mode);
+        }
+    </script>
 
     <script src="characters.js"></script>
     <script src="script.js"></script>
