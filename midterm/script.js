@@ -9,7 +9,7 @@
         }
 
         let start = 0;
-        let currentSearch = "";
+        let currentSearch = ""; 
         let currentRace = "all";
 
         const getElements = () => ({
