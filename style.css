@@ -37,7 +37,7 @@ body {
     border-radius: 50%;
     border: 4px solid #f1f5f9;
     object-fit: cover;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
@@ -349,6 +349,110 @@ h2 {
 
 .portfolio-card-details p {
     margin: 2px 0;
+}
+
+:root {
+    --bg: #0f172a;
+    --text: #f1f5f9;
+    --card: #ffffff;
+    --cardText: #1e293b;
+    --soft: #f8fafc;
+    --border: #e2e8f0;
+}
+
+[data-theme="dark"] {
+    --bg: #0f172a;
+    --text: #f1f5f9;
+    --card: #1e293b;
+    --cardText: #f4f5f6;
+    --soft: #1e293b;
+    --border: #f6f6f7;
+}
+
+[data-theme="light"] {
+    --bg: #f1f5f9;
+    --text: #0f172a;
+    --card: #ffffff;
+    --cardText: #1e293b;
+    --soft: #f8fafc;
+    --border: #e2e8f0;
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--text);
+}
+
+/* LEFT CARD */
+.card-box,
+.content-box{
+    background: var(--card);
+    color: var(--cardText);
+}
+
+
+/* MENU */
+.menu a,
+.contact-item,
+.education-item,
+.social-links-horizontal a,
+.portfolio-card {
+    background: var(--soft);
+    color: var(--cardText);
+    border: 1px solid var(--border);
+}
+
+.portfolio-card p,
+.contact-item small,
+.education-item p {
+    color: var(--cardText);
+}
+
+.role {
+    color: #0ea5e9;
+}
+
+.menu a,
+.menu a i,
+.section h2,
+.social-links-horizontal a{
+    color: var(--cardText);
+}
+
+.school-info h3, 
+.contact-item strong {
+    color: #0ea5e9;
+}
+
+.theme-switch button {
+    background: var(--soft);
+    border: 1px solid var(--border);
+    color: var(--cardText);
+    padding: 8px 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.theme-switch button:hover {
+    transform: scale(1.1);
+}
+
+.theme-switch button i {
+    transition: 0.3s ease;
+}
+
+.theme-switch {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+}
+
+#themeToggle {
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    font-size: 1.5rem; 
 }
 
 @media (max-width: 1024px) {
