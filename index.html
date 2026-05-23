@@ -13,177 +13,301 @@
 </head>
 
 <body>
-    <div class="container">
-        <div class="card-box">
-            <div class="theme-switch">
-                <button id="themeToggle">
-                    <i class="bi bi-moon-stars-fill"></i>
-                </button>
-            </div>
-            <img src="image\profile.jpg" alt="Profile" class="profile">
-            <h2>Jay-R Umandap</h2>
-            <p class="role">Future Software Engineer</p>
-            <div class="menu">
-                <a href="#" onclick="showSection('about')">
-                    <span>About</span> <i class="bi bi-person"></i>
-                </a>
-                <a href="#" onclick="showSection('education')">
-                    <span>Education</span> <i class="bi bi-mortarboard"></i>
-                </a>
-                <a href="#" onclick="showSection('skills')">
-                    <span>Skills</span> <i class="bi bi-code-slash"></i>
-                </a>
-                <a href="#" onclick="showSection('portfolio')">
-                    <span>Projects</span> <i class="bi bi-grid"></i>
-                </a>
-            </div>
-        </div>
+    <button id="topBtn">
+        <i class="bi bi-arrow-up"></i>
+    </button>
 
-        <div class="content-box">
-            <div id="about" class="section">
-                <h2>About Me</h2>
-                <p>
-                    Hello! I'm <strong>Jay-R Umandap</strong>, an IT student passionate about coding
-                    and building web applications. I enjoy learning new technologies, solving problems,
-                    and improving my skills with the goal of becoming a professional web developer or software engineer.
-                </p>
-
-                <div class="contact-grid">
-                    <div class="contact-item">
-                        <i class="bi bi-geo-alt"></i>
-                        <strong>Location</strong>
-                        <small>Tanauan, Batangas</small>
+    <div class="container py-4">
+        <div class="row g-4">
+            <div class="col-lg-4">
+                <div class="sidebar-card p-4">
+                    <div class="d-flex justify-content-end mb-3">
+                        <button id="themeToggle">
+                            <i class="bi bi-moon-stars-fill"></i>
+                        </button>
                     </div>
 
-                    <div class="contact-item">
-                        <i class="bi bi-envelope"></i>
-                        <strong>Email</strong>
-                        <small>jayrumandap0@gmail.com</small>
+                    <div class="text-center">
+                        <img src="image/profile.jpg" class="profile-img mb-3">
+                        <h2 class="fw-bold">Jay-R Umandap</h2>
+                        <p class="role">Web Developer</p>
                     </div>
-                </div>
-                <div class="social-links-horizontal">
-                    <a href="https://www.facebook.com/share/1DFDwpX1BJ/" target="_blank">
-                        <i class="bi bi-facebook"></i> <span>Facebook</span>
-                    </a>
-                    <a href="https://www.tiktok.com/@akosibossjayr" target="_blank">
-                        <i class="bi bi-tiktok"></i> <span>Tiktok</span>
-                    </a>
-                    <a href="https://www.instagram.com/ser_jear?igsh=amxoMW5zNG5zNGN3Zmxx" target="_blank">
-                        <i class="bi bi-instagram"></i> <span>Instagram</span>
-                    </a>
-                    <a href="https://github.com/jrumandap" target="_blank">
-                        <i class="bi bi-github"></i> <span>Github</span>
-                    </a>
-                </div>
-            </div>
 
-            <div id="education" class="section">
+                    <div class="d-grid gap-3 mt-4">
+                        <a href="#" class="menu-btn active" onclick="showSection(event,'about')">
+                            <span>About</span>
+                            <i class="bi bi-person"></i>
+                        </a>
+                        <a href="#" class="menu-btn" onclick="showSection(event,'education')">
+                            <span>Education</span>
+                            <i class="bi bi-mortarboard"></i>
 
-                <h2>Education</h2>
+                        </a>
+                        <a href="#" class="menu-btn" onclick="showSection(event,'skills')">
+                            <span>Skills</span>
+                            <i class="bi bi-code-slash"></i>
 
-                <div class="education-item">
-                    <div class="school-info">
-                        <h3>Suplang Elementary School</h3>
-                        <p>S.Y. 2012-2018 | Grade 1 to Grade 6</p>
-                    </div>
-                </div>
-
-                <div class="education-item">
-                    <div class="school-info">
-                        <h3>Bunggo National High School</h3>
-                        <p>S.Y. 2019-2022 | Grade 7 to Grade 10</p>
-                    </div>
-                </div>
-
-                <div class="education-item">
-                    <div class="school-info">
-                        <h3>Bunggo Integrated School (SHS)</h3>
-                        <p>S.Y. 2022-2024 | Grade 11-12 | HUMSS Strand</p>
-                    </div>
-                </div>
-
-                <div class="education-item">
-                    <div class="school-info">
-                        <h3>Polytechnic University of the Philippines - Sto. Tomas Campus</h3>
-                        <p>I am currently a DIT 2-1 student, continuously developing my skills in programming and web
-                            development to become a professional web developer or software engineer in the future.</p>
+                        </a>
+                        <a href="#" class="menu-btn" onclick="showSection(event,'projects')">
+                            <span>Projects</span>
+                            <i class="bi bi-grid"></i>
+                        </a>
                     </div>
                 </div>
             </div>
 
-            <div id="skills" class="section">
-                <h2>Skills</h2>
+            <div class="col-lg-8">
+                <div class="main-card p-4 p-lg-5">
+                    <div class="section active" id="about">
+                        <h1 class="section-title">About Me</h1>
 
-                <div class="skill">
-                    <p>Python <span>60%</span></p>
-                    <div class="skill-bar">
-                        <div class="skill-fill" style="width:60%"></div>
-                    </div>
-                </div>
+                        <p class="lh-lg">
+                            Hello! I'm <strong>Jay-R Umandap</strong>,an IT student passionate
+                            about coding and building web applications. I enjoy learning new
+                            technologies, solving problems, and improving my skills with the
+                            goal of becoming a professional web developer or software engineer.
+                        </p>
 
-                <div class="skill">
-                    <p>C Language <span>40%</span></p>
-                    <div class="skill-bar">
-                        <div class="skill-fill" style="width:40%"></div>
-                    </div>
-                </div>
-
-                <div class="skill">
-                    <p>HTML <span>50%</span></p>
-                    <div class="skill-bar">
-                        <div class="skill-fill" style="width:50%"></div>
-                    </div>
-                </div>
-
-                <div class="skill">
-                    <p>CSS <span>35%</span></p>
-                    <div class="skill-bar">
-                        <div class="skill-fill" style="width:35%"></div>
-                    </div>
-                </div>
-
-                <div class="skill">
-                    <p>JavaScript <span>25%</span></p>
-                    <div class="skill-bar">
-                        <div class="skill-fill" style="width:25%"></div>
-                    </div>
-                </div>
-            </div>
-
-           <div id="portfolio" class="section">
-                <h2>Portfolio</h2>
-                <p class="section-subtitle">Here are some of my public projects.</p>
-
-                <div class="portfolio-container">
-                    <div class="portfolio-card">
-                        <img src="image\Project1.png" alt="HUAWEI MatePad" class="portfolio-card-img">
-                        <div class="portfolio-card-details">
-                            <p class="title">HUAWEI MatePad</p>
-                            <p class="model">A02</p>
-                            <a href="https://jrumandap.github.io/A02/index.html" target="_blank">
-                                <button class="view-btn">View</button>
-                            </a>
+                        <div class="row g-4 mt-2">
+                            <div class="col-md-6">
+                                <div class="contact-card p-4 h-100">
+                                    <i class="bi bi-geo-alt"></i>
+                                    <h5 class="mt-3 fw-bold">Location</h5>
+                                    <p class="mb-0">Tanauan, Batangas</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="contact-card p-4 h-100">
+                                    <i class="bi bi-envelope"></i>
+                                    <h5 class="mt-3 fw-bold">Email</h5>
+                                    <p class="mb-0">jayrumandap0@gmail.com</p>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="portfolio-card">
-                        <img src="image\Project2.png" alt="HUAWEI MatePad" class="portfolio-card-img">
-                        <div class="portfolio-card-details">
-                            <p class="title">Dragon Ball</p>
-                            <p class="model">midterm</p>
-                            <a href="https://jrumandap.github.io/midterm/index.html" target="_blank">
-                                <button class="view-btn">View</button>
+
+                        <div class="d-flex flex-wrap gap-3 mt-4">
+                            <a href="https://www.facebook.com/share/1DFDwpX1BJ/" target="_blank" class="social-btn">
+                                <i class="bi bi-facebook"></i>
+                                Facebook
+                            </a>
+
+                            <a href="https://github.com/jrumandap" target="_blank" class="social-btn">
+                                <i class="bi bi-github"></i>
+                                Github
+                            </a>
+
+                            <a href="https://www.instagram.com/ser_jear" target="_blank" class="social-btn">
+                                <i class="bi bi-instagram"></i>
+                                Instagram
+                            </a>
+                            <a href="https://www.tiktok.com/@akosibossjayr" target="_blank" class="social-btn">
+                                <i class="bi bi-tiktok"></i>
+                                TikTok
                             </a>
                         </div>
                     </div>
 
+                    <div class="section" id="education">
+                        <h1 class="section-title">Education</h1>
+
+                        <div class="education-card p-4 mb-4 d-flex align-items-center gap-4">
+                            <img src="image\suplang.png" class="school-logo">
+                            <div>
+                                <h4 class="fw-bold">Suplang Elementary School</h4>
+                                <p class="mb-0">S.Y. 2012 - 2018 <br>Grade 1 to Grade 6</p>
+                            </div>
+                        </div>
+
+                        <div class="education-card p-4 mb-4 d-flex align-items-center gap-4">
+                            <img src="image/bunggo.png" class="school-logo">
+                            <div>
+                                <h4 class="fw-bold">Bunggo National High School</h4>
+                                <p class="mb-0">S.Y. 2019 - 2022 <br>Grade 7 to Grade 10</p>
+                            </div>
+                        </div>
+
+                        <div class="education-card p-4 mb-4 d-flex align-items-center gap-4">
+                            <img src="image\bunggo.png" class="school-logo">
+                            <div>
+                                <h4 class="fw-bold">Bunggo Integrated School</h4>
+                                <p class="mb-0">S.Y. 2022 - 2024 <br>HUMSS Strand</p>
+                            </div>
+                        </div>
+
+                        <div class="education-card p-4 d-flex align-items-center gap-4">
+                            <img src="image\pup.png" class="school-logo">
+                            <div>
+                                <h4 class="fw-bold">PUP Sto. Tomas Campus</h4>
+                                <p class="mb-0">Diploma in Information Technology <br>Currently 2nd Year Student</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section" id="skills">
+                        <h1 class="section-title">Skills</h1>
+
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <div class="skill-card">
+                                    <div class="d-flex align-items-center gap-3 mb-3">
+                                        <img src="image\python.png" class="skill-logo">
+                                        <div class="w-100">
+                                            <div class="d-flex justify-content-between">
+                                                <span class="fw-bold">Python</span>
+                                                <span>60%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar" style="width:60%"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="skill-card">
+                                    <div class="d-flex align-items-center gap-3 mb-3">
+                                        <img src="image\c.png" class="skill-logo">
+                                        <div class="w-100">
+                                            <div class="d-flex justify-content-between">
+                                                <span class="fw-bold">C</span>
+                                                <span>40%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar" style="width:40%"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="skill-card">
+                                    <div class="d-flex align-items-center gap-3 mb-3">
+                                        <img src="image\html.png" class="skill-logo">
+                                        <div class="w-100">
+                                            <div class="d-flex justify-content-between">
+                                                <span class="fw-bold">HTML</span>
+                                                <span>50%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar" style="width:50%"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="skill-card">
+                                    <div class="d-flex align-items-center gap-3 mb-3">
+                                        <img src="image\css.jpg" class="skill-logo">
+                                        <div class="w-100">
+                                            <div class="d-flex justify-content-between">
+                                                <span class="fw-bold">CSS</span>
+                                                <span>25%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar" style="width:25%"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="skill-card">
+                                    <div class="d-flex align-items-center gap-3 mb-3">
+                                        <img src="image\js.png" class="skill-logo">
+                                        <div class="w-100">
+                                            <div class="d-flex justify-content-between">
+                                                <span class="fw-bold">JavaScript</span>
+                                                <span>20%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar" style="width:20%"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="skill-card">
+                                    <div class="d-flex align-items-center gap-3 mb-3">
+                                        <img src="image\figma.png" class="skill-logo">
+                                        <div class="w-100">
+                                            <div class="d-flex justify-content-between">
+                                                <span class="fw-bold">Figma</span>
+                                                <span>40%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar" style="width:40%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section" id="projects">
+                        <h1 class="section-title">Projects</h1>
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <div class="project-card h-100">
+                                    <img src="image/Project1.png" class="w-100 project-img" data-bs-toggle="modal"
+                                        data-bs-target="#imageModal" onclick="showImage(this.src)">
+                                    <div class="p-4">
+                                        <h4 class="fw-bold">A02</h4>
+                                        <p>Activity 02 for Web Development featuring a specific electronic device.</p>
+                                        <a href="https://github.com/jrumandap/jrumandap.github.io/tree/main/A02"target="_blank">
+                                            <button class="view-btn"><i class="bi bi-file-earmark-text"></i>Document</button>
+                                        </a>
+                                        <a href="https://jrumandap.github.io/A02/index.html" target="_blank">
+                                            <button class="view-btn"><i class="bi bi-eye"></i>View Project</button>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="project-card h-100">
+                                    <img src="image/Project2.png" class="w-100 project-img" data-bs-toggle="modal"
+                                        data-bs-target="#imageModal" onclick="showImage(this.src)">
+                                    <div class="p-4">
+                                        <h4 class="fw-bold">Midterm</h4>
+                                        <p>Midterm project for Web Development using a free public API.</p>
+                                        <a href="https://github.com/jrumandap/jrumandap.github.io/tree/main/midterm" target="_blank">
+                                            <button class="view-btn"><i class="bi bi-file-earmark-text"></i>Document</button>
+                                        </a>
+                                        <a href="https://jrumandap.github.io/midterm/index.html" target="_blank">
+                                            <button class="view-btn"><i class="bi bi-eye"></i>View Project</button>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-            crossorigin="anonymous"></script>
-        <script src="script.js"></script>
+    <div class="modal fade" id="imageModal">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <img id="modalImage">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+
 </body>
-
 </html>
