@@ -377,9 +377,6 @@ h2 {
     opacity: 1;
 }
 
-/* =========================
-   LAPTOP (1200px below)
-========================= */
 @media (max-width: 1200px) {
 
     .profile-img {
@@ -392,9 +389,6 @@ h2 {
     }
 }
 
-/* =========================
-   TABLET (992px below)
-========================= */
 @media (max-width: 992px) {
 
     .col-lg-4,
@@ -413,9 +407,6 @@ h2 {
     }
 }
 
-/* =========================
-   ALL MOBILE / PHONE (768px below)
-========================= */
 @media (max-width: 768px) {
 
     .container {
@@ -450,18 +441,12 @@ h2 {
         font-size: 1.4rem;
     }
 
-    /* =========================
-       PROJECT BUTTONS FIX (IMPORTANT)
-       ALWAYS INLINE
-    ========================= */
-
     .project-card .p-4 a {
         display: inline-block;
         margin-right: 6px;
         vertical-align: middle;
     }
 
-    /* button design only */
     .view-btn {
         font-size: .8rem;
         padding: 8px 10px;
@@ -471,12 +456,10 @@ h2 {
         gap: 5px;
     }
 
-    /* keep text stable */
     .project-card .p-4 {
         text-align: left;
     }
 
-    /* SOCIAL BUTTON FIX */
     .social-btn {
         width: 100%;
         justify-content: center;
