@@ -378,7 +378,6 @@ h2 {
 }
 
 @media (max-width: 992px) {
-
     .col-lg-4,
     .col-lg-8 {
         flex: 0 0 100% !important;
@@ -396,7 +395,6 @@ h2 {
 }
 
 @media (max-width: 768px) {
-
     .container {
         padding: 12px;
     }
@@ -428,10 +426,22 @@ h2 {
     .section-title {
         font-size: 1.5rem;
     }
+
+    .projects-container { 
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .project-card { 
+        flex: 1 1 calc(50% - 15px); 
+    }
 }
 
+/* ==========================================
+   MOBILE VIEW (max-width: 576px)
+   ========================================== */
 @media (max-width: 576px) {
-
     .container {
         padding: 8px;
     }
@@ -454,10 +464,31 @@ h2 {
         width: 100%;
         justify-content: center;
     }
+
+    .projects-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .project-card {
+        width: 100%; 
+        max-width: 100%;
+    }
+
+    .project-card .button-group, 
+    .project-card d-flex { 
+        flex-direction: column !important;
+        gap: 8px !important;
+    }
+
+    .project-card .btn, 
+    .project-card a {
+        width: 100% !important; 
+        margin-right: 0 !important;
+    }
 }
 
 @media (max-width: 400px) {
-
     .profile-img {
         width: 80px;
         height: 80px;
