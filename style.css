@@ -122,7 +122,7 @@ h2 {
     position: absolute;
     width: 0%;
     height: 100%;
-    background:linear-gradient(135deg, var(--primary), var(--primary2));
+    background: linear-gradient(135deg, var(--primary), var(--primary2));
     left: 0;
     top: 0;
     z-index: -1;
@@ -176,7 +176,7 @@ h2 {
     position: absolute;
     width: 70%;
     height: 5px;
-    background:linear-gradient(90deg, var(--primary), transparent);
+    background: linear-gradient(90deg, var(--primary), transparent);
     left: 0;
     bottom: -10px;
     border-radius: 50px;
@@ -213,7 +213,7 @@ h2 {
 }
 
 .social-btn:hover {
-    background:linear-gradient(135deg, var(--primary), var(--primary2));
+    background: linear-gradient(135deg, var(--primary), var(--primary2));
     color: white;
     transform: translateY(-4px);
     box-shadow: var(--hover);
@@ -377,7 +377,26 @@ h2 {
     opacity: 1;
 }
 
+/* =========================
+   LAPTOP (1200px below)
+========================= */
+@media (max-width: 1200px) {
+
+    .profile-img {
+        width: 130px;
+        height: 130px;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+}
+
+/* =========================
+   TABLET (992px below)
+========================= */
 @media (max-width: 992px) {
+
     .col-lg-4,
     .col-lg-8 {
         flex: 0 0 100% !important;
@@ -394,7 +413,11 @@ h2 {
     }
 }
 
+/* =========================
+   ALL MOBILE / PHONE (768px below)
+========================= */
 @media (max-width: 768px) {
+
     .container {
         padding: 12px;
     }
@@ -406,12 +429,12 @@ h2 {
     }
 
     .profile-img {
-        width: 110px;
-        height: 110px;
+        width: 100px;
+        height: 100px;
     }
 
     h2 {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
     }
 
     .role {
@@ -424,85 +447,38 @@ h2 {
     }
 
     .section-title {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
     }
 
-    .projects-container { 
-        display: flex;
-        flex-wrap: wrap;
-        gap: 15px;
+    /* =========================
+       PROJECT BUTTONS FIX (IMPORTANT)
+       ALWAYS INLINE
+    ========================= */
+
+    .project-card .p-4 a {
+        display: inline-block;
+        margin-right: 6px;
+        vertical-align: middle;
     }
 
-    .project-card { 
-        flex: 1 1 calc(50% - 15px); 
-    }
-}
-
-/* ==========================================
-   MOBILE VIEW (max-width: 576px)
-   ========================================== */
-@media (max-width: 576px) {
-    .container {
-        padding: 8px;
+    /* button design only */
+    .view-btn {
+        font-size: .8rem;
+        padding: 8px 10px;
+        white-space: nowrap;
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
     }
 
-    .profile-img {
-        width: 90px;
-        height: 90px;
+    /* keep text stable */
+    .project-card .p-4 {
+        text-align: left;
     }
 
-    h2 {
-        font-size: 1.3rem;
-    }
-
-    .menu-btn {
-        font-size: .85rem;
-        padding: 10px;
-    }
-
+    /* SOCIAL BUTTON FIX */
     .social-btn {
         width: 100%;
         justify-content: center;
-    }
-
-    .projects-container {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .project-card {
-        width: 100%; 
-        max-width: 100%;
-    }
-
-    .project-card .button-group, 
-    .project-card d-flex { 
-        flex-direction: column !important;
-        gap: 8px !important;
-    }
-
-    .project-card .btn, 
-    .project-card a {
-        width: 100% !important; 
-        margin-right: 0 !important;
-    }
-}
-
-@media (max-width: 400px) {
-    .profile-img {
-        width: 80px;
-        height: 80px;
-    }
-
-    h2 {
-        font-size: 1.1rem;
-    }
-
-    .section-title {
-        font-size: 1.2rem;
-    }
-
-    .menu-btn {
-        font-size: .8rem;
     }
 }
