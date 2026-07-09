@@ -1,321 +1,203 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>My Portfolio</title>
-    <link rel="icon" type="image/png" href="image\logo.png">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="icon" type="image/png" href="image/logo.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <button id="topBtn">
-        <i class="bi bi-arrow-up"></i>
+    <nav class="navbar navbar-expand-lg fixed-top navbar-custom" id="siteNavbar">
+        <div class="container px-3 px-md-4 px-lg-5">
+            <a class="navbar-brand-signature text-truncate" href="#home" style="max-width: 60%;">
+                ITSMEJEAR<span>.</span>
+            </a>
+            <div class="d-flex align-items-center gap-2 order-lg-3">
+                <button class="theme-toggle-btn" id="themeToggle" aria-label="Toggle Interface Theme">
+                    <i class="bi bi-moon-stars-fill"></i>
+                </button>
+                <button class="navbar-toggler border-0 p-1" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#siteNavFields">
+                    <i class="bi bi-list navbar-toggler-icon-custom"></i>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse order-lg-2" id="siteNavFields">
+                <ul class="navbar-nav ms-auto gap-1 mt-3 mt-lg-0 text-center text-lg-start">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <button id="scrollUpBtn" class="scroll-btn-hidden" aria-label="Scroll to top">
+        <i class="bi bi-arrow-up-short"></i>
     </button>
 
-    <div class="container py-4">
-        <div class="row g-4">
-            <div class="col-lg-4">
-                <div class="sidebar-card p-4">
-                    <div class="d-flex justify-content-end mb-3">
-                        <button id="themeToggle">
-                            <i class="bi bi-moon-stars-fill"></i>
-                        </button>
+    <div id="home" class="hero-section py-5 mt-5">
+        <div class="container px-3 px-md-4 px-lg-5">
+            <div class="row g-4 g-lg-5 align-items-center">
+                <div class="col-12 col-lg-7 text-start text-lg-start">
+                    <span class="section-tag mb-1 mt-5 d-block">01 / Welcome</span>
+                    <h1 class="hero-title display-4 fw-bold">Hello, It's me</h1>
+                    <h1 class="hero-title display-4 fw-bold"><span class="hero-gradient-text">Jay-R Umandap</span></h1>
+                    <h2 class="fs-4 text-secondary-custom fw-normal mb-4">
+                        <span class="badge-status mb-3 d-inline-block">IT STUDENT</span>
+                    </h2>
+                    <p class="text-secondary-custom lh-lg mb-4 mx-auto mx-lg-0 style-desc"
+                        style="max-width: 100%; width: 610px;">
+                        Passionate about web development and continuously learning to build responsive websites
+                        and interactive user interfaces.</p>
+                    <div class="d-flex flex-row gap-2 gap-sm-3 justify-content-center justify-content-lg-start mb-4 w-100"
+                        style="max-width: 450px;">
+                        <a href="#about"
+                            class="btn btn-primary-custom py-2 px-2 px-sm-4 rounded-pill fw-semibold text-center flex-fill">
+                            <i class="bi bi-person me-1 me-sm-2"></i>About Me
+                        </a>
+                        <a href="#projects"
+                            class="btn btn-outline-custom-hero py-2 px-2 px-sm-4 rounded-pill fw-semibold text-center flex-fill">
+                            <i class="bi bi-briefcase me-1 me-sm-2"></i>View Projects
+                        </a>
                     </div>
-
-                    <div class="text-center">
-                        <img src="image/profile.jpg" class="profile-img mb-3">
-                        <h2 class="fw-bold">Jay-R Umandap</h2>
-                        <p class="role">Web Developer</p>
-                    </div>
-
-                    <div class="d-grid gap-3 mt-4">
-                        <a href="#" class="menu-btn active" onclick="showSection(event,'about')">
-                            <span>About</span>
-                            <i class="bi bi-person"></i>
-                        </a>
-                        <a href="#" class="menu-btn" onclick="showSection(event,'education')">
-                            <span>Education</span>
-                            <i class="bi bi-mortarboard"></i>
-
-                        </a>
-                        <a href="#" class="menu-btn" onclick="showSection(event,'skills')">
-                            <span>Skills</span>
-                            <i class="bi bi-code-slash"></i>
-
-                        </a>
-                        <a href="#" class="menu-btn" onclick="showSection(event,'projects')">
-                            <span>Projects</span>
-                            <i class="bi bi-grid"></i>
-                        </a>
+                    <div class="social-grid d-flex flex-wrap gap-2 justify-content-center justify-content-lg-start">
+                        <a href="https://www.facebook.com/share/1DFDwpX1BJ/" target="_blank" class="social-pill"><i
+                                class="bi bi-facebook"></i></a>
+                        <a href="https://github.com/jrumandap" target="_blank" class="social-pill"><i
+                                class="bi bi-github"></i></a>
+                        <a href="https://www.instagram.com/ser_jear" target="_blank" class="social-pill"><i
+                                class="bi bi-instagram"></i></a>
+                        <a href="https://www.tiktok.com/@akosibossjayr" target="_blank" class="social-pill"><i
+                                class="bi bi-tiktok"></i></a>
                     </div>
                 </div>
+
+                <div class="col-12 col-lg-5 text-center text-lg-end mb-4 mb-lg-0">
+                    <div class="avatar-container d-inline-block position-relative"
+                        style="max-width: 350px; width: 100%;">
+                        <div class="avatar-glow-ring"></div>
+                        <img src="image/profile.png" class="hero-avatar img-fluid integrated-interactive-avatar"
+                            alt="Profile Image" tabindex="0">
+                    </div>
+                </div>
+
             </div>
-
-            <div class="col-lg-8">
-                <div class="main-card p-4 p-lg-5">
-                    <div class="section active" id="about">
-                        <h1 class="section-title">About Me</h1>
-
-                        <p class="lh-lg">
-                            Hello! I'm <strong>Jay-R Umandap</strong>,an IT student passionate
-                            about coding and building web applications. I enjoy learning new
-                            technologies, solving problems, and improving my skills with the
-                            goal of becoming a professional web developer or software engineer.
-                        </p>
-
-                        <div class="row g-4 mt-2">
-                            <div class="col-md-6">
-                                <div class="contact-card p-4 h-100">
-                                    <i class="bi bi-geo-alt"></i>
-                                    <h5 class="mt-3 fw-bold">Location</h5>
-                                    <p class="mb-0">Tanauan, Batangas</p>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="contact-card p-4 h-100">
-                                    <i class="bi bi-envelope"></i>
-                                    <h5 class="mt-3 fw-bold">Email</h5>
-                                    <p class="mb-0">jayrumandap0@gmail.com</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="d-flex flex-wrap gap-3 mt-4">
-                            <a href="https://www.facebook.com/share/1DFDwpX1BJ/" target="_blank" class="social-btn">
-                                <i class="bi bi-facebook"></i>
-                                Facebook
-                            </a>
-
-                            <a href="https://github.com/jrumandap" target="_blank" class="social-btn">
-                                <i class="bi bi-github"></i>
-                                Github
-                            </a>
-
-                            <a href="https://www.instagram.com/ser_jear" target="_blank" class="social-btn">
-                                <i class="bi bi-instagram"></i>
-                                Instagram
-                            </a>
-                            <a href="https://www.tiktok.com/@akosibossjayr" target="_blank" class="social-btn">
-                                <i class="bi bi-tiktok"></i>
-                                TikTok
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="section" id="education">
-                        <h1 class="section-title">Education</h1>
-
-                        <div class="education-card p-4 mb-4 d-flex align-items-center gap-4">
-                            <img src="image\suplang.png" class="school-logo">
-                            <div>
-                                <h4 class="fw-bold">Suplang Elementary School</h4>
-                                <p class="mb-0">S.Y. 2012 - 2018 <br>Grade 1 to Grade 6</p>
-                            </div>
-                        </div>
-
-                        <div class="education-card p-4 mb-4 d-flex align-items-center gap-4">
-                            <img src="image/bunggo.png" class="school-logo">
-                            <div>
-                                <h4 class="fw-bold">Bunggo National High School</h4>
-                                <p class="mb-0">S.Y. 2019 - 2022 <br>Grade 7 to Grade 10</p>
-                            </div>
-                        </div>
-
-                        <div class="education-card p-4 mb-4 d-flex align-items-center gap-4">
-                            <img src="image\bunggo.png" class="school-logo">
-                            <div>
-                                <h4 class="fw-bold">Bunggo Integrated School</h4>
-                                <p class="mb-0">S.Y. 2022 - 2024 <br>HUMSS Strand</p>
-                            </div>
-                        </div>
-
-                        <div class="education-card p-4 d-flex align-items-center gap-4">
-                            <img src="image\pup.png" class="school-logo">
-                            <div>
-                                <h4 class="fw-bold">PUP Sto. Tomas Campus</h4>
-                                <p class="mb-0">Diploma in Information Technology <br>Currently 2nd Year Student</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="section" id="skills">
-                        <h1 class="section-title">Skills</h1>
-
-                        <div class="row g-4">
-                            <div class="col-md-6">
-                                <div class="skill-card">
-                                    <div class="d-flex align-items-center gap-3 mb-3">
-                                        <img src="image\python.png" class="skill-logo">
-                                        <div class="w-100">
-                                            <div class="d-flex justify-content-between">
-                                                <span class="fw-bold">Python</span>
-                                                <span>60%</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="progress">
-                                        <div class="progress-bar" style="width:60%"></div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <div class="skill-card">
-                                    <div class="d-flex align-items-center gap-3 mb-3">
-                                        <img src="image\c.png" class="skill-logo">
-                                        <div class="w-100">
-                                            <div class="d-flex justify-content-between">
-                                                <span class="fw-bold">C</span>
-                                                <span>40%</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="progress">
-                                        <div class="progress-bar" style="width:40%"></div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <div class="skill-card">
-                                    <div class="d-flex align-items-center gap-3 mb-3">
-                                        <img src="image\html.png" class="skill-logo">
-                                        <div class="w-100">
-                                            <div class="d-flex justify-content-between">
-                                                <span class="fw-bold">HTML</span>
-                                                <span>50%</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="progress">
-                                        <div class="progress-bar" style="width:50%"></div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <div class="skill-card">
-                                    <div class="d-flex align-items-center gap-3 mb-3">
-                                        <img src="image\css.jpg" class="skill-logo">
-                                        <div class="w-100">
-                                            <div class="d-flex justify-content-between">
-                                                <span class="fw-bold">CSS</span>
-                                                <span>25%</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="progress">
-                                        <div class="progress-bar" style="width:25%"></div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <div class="skill-card">
-                                    <div class="d-flex align-items-center gap-3 mb-3">
-                                        <img src="image\js.png" class="skill-logo">
-                                        <div class="w-100">
-                                            <div class="d-flex justify-content-between">
-                                                <span class="fw-bold">JavaScript</span>
-                                                <span>20%</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="progress">
-                                        <div class="progress-bar" style="width:20%"></div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <div class="skill-card">
-                                    <div class="d-flex align-items-center gap-3 mb-3">
-                                        <img src="image\figma.png" class="skill-logo">
-                                        <div class="w-100">
-                                            <div class="d-flex justify-content-between">
-                                                <span class="fw-bold">Figma</span>
-                                                <span>40%</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="progress">
-                                        <div class="progress-bar" style="width:40%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="section" id="projects">
-                    <h1 class="section-title">Projects</h1>
-
-                    <div class="row g-4">
-
-                        <div class="col-md-6">
-                            <div class="project-card h-100">
-                                <img src="image/Project1.png" class="w-100 project-img" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="showImage(this.src)">
-                                <div class="p-4">
-                                    <h4 class="fw-bold">A02</h4>
-                                    <p>Activity 02 for Web Development featuring a specific electronic device.</p>
-
-                                    <div class="project-buttons">
-                                        <a href="https://github.com/jrumandap/jrumandap.github.io/tree/main/A02" target="_blank" class="view-btn">
-                                            <i class="bi bi-file-earmark-text"></i> Document
-                                        </a>
-                                        <a href="https://jrumandap.github.io/A02/index.html" target="_blank" class="view-btn">
-                                            <i class="bi bi-eye"></i> View Project
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <div class="project-card h-100">
-                                <img src="image/Project2.png" class="w-100 project-img" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="showImage(this.src)">
-                                <div class="p-4">
-                                    <h4 class="fw-bold">Midterm</h4>
-                                    <p>Midterm project for Web Development using a free public API.</p>
-
-                                    <div class="project-buttons">
-                                        <a href="https://github.com/jrumandap/jrumandap.github.io/tree/main/midterm" target="_blank" class="view-btn">
-                                            <i class="bi bi-file-earmark-text"></i> Document
-                                        </a>
-                                        <a href="https://jrumandap.github.io/midterm/index.html" target="_blank" class="view-btn">
-                                            <i class="bi bi-eye"></i> View Project
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
+        </div>
+    </div>
+    
+    <div id="about" class="content-section py-5">
+        <div class="container px-3 px-md-4 px-lg-5">
+            <span class="section-tag d-block mb-2">02 / Profile</span>
+            <h2 class="section-heading mb-4">About Me</h2>
+            <div class="row g-4 align-items-center mt-2">
+                <div class="col-12 col-lg-7 text-start text-lg-start">
+                    <p class="text-secondary-custom lh-lg mb-0" style="font-size: 1.05rem;">I am <strong
+                            style="color: var(--text-heading);">Jay-R Umandap</strong>, an DIT student at the <span
+                            class="text-primary fw-semibold">Polytechnic University of the Philippines - Sto. Tomas
+                            Campus</span>.
+                        Right now, I am continuously expanding my knowledge in web development by learning new
+                        programming languages, frameworks, and development tools. I enjoy creating clean, responsive,
+                        and user-friendly web experiences while growing my skills to become a professional web
+                        developer.</p>
                 </div>
+                <div class="col-12 col-lg-5">
+                    <div class="d-flex flex-column gap-3 ps-0 ps-lg-4">
+                        <div class="coordinate-pill p-3 d-flex align-items-center gap-3 w-100">
+                            <div class="pill-icon-box d-flex align-items-center justify-content-center flex-shrink-0"><i
+                                    class="bi bi-geo-alt"></i></div>
+                            <div class="text-start">
+                                <small class="text-secondary-custom d-block"
+                                    style="font-size: 0.75rem; letter-spacing: 0.5px;">LOCATION</small>
+                                <p class="fw-bold m-0" style="color: var(--text-heading); font-size: 0.95rem;">Tanauan,
+                                    Batangas</p>
+                            </div>
+                        </div>
+                        <div class="coordinate-pill p-3 d-flex align-items-center gap-3 w-100">
+                            <div class="pill-icon-box d-flex align-items-center justify-content-center flex-shrink-0"><i
+                                    class="bi bi-envelope"></i></div>
+                            <div class="text-start text-truncate">
+                                <small class="text-secondary-custom d-block"
+                                    style="font-size: 0.75rem; letter-spacing: 0.5px;">EMAIL</small>
+                                <p class="fw-bold m-0 text-truncate"
+                                    style="color: var(--text-heading); font-size: 0.95rem;">
+                                    jayrumandap0@gmail.com</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="modal fade" id="imageModal">
-        <div class="modal-dialog modal-dialog-centered modal-xl">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <img id="modalImage">
+    <div id="education" class="content-section py-5">
+        <div class="container px-3 px-md-4 px-lg-5">
+            <span class="section-tag d-block">03 / History</span>
+            <h2 class="section-heading mb-4">Education</h2>
+            <div class="row g-4">
+                <div class="col-12 col-lg-5">
+                    <div class="list-group educ-list-group" id="educTabs" role="tablist"></div>
+                </div>
+                <div class="col-12 col-lg-7">
+                    <div class="tab-content" id="educTabContent" style="min-height: 200px; height: 100%;"></div>
                 </div>
             </div>
         </div>
     </div>
 
+    <div class="modal fade" id="schoolLogoModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-sm modal-md-normal">
+            <div class="modal-content bg-body border">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title fw-bold" id="schoolModalTitle">School Name</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center p-3 p-md-4">
+                    <img id="schoolModalImg" src="" alt="School Logo" class="img-fluid"
+                        style="max-height: 250px; object-fit: contain; width: 100%;">
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-        crossorigin="anonymous"></script>
+    <div class="modal fade" id="viewModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl px-2">
+            <div class="modal-content bg-transparent border-0">
+                <div class="modal-body p-1 position-relative text-center">
+                    <button type="button" class="btn-close position-absolute top-0 end-0 m-2" data-bs-dismiss="modal"
+                        aria-label="Close"
+                        style="z-index: 10; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));"></button>
+                    <img id="modalTargetImg" class="img-fluid rounded" alt="Project Preview"
+                        style="max-height: 80vh; object-fit: contain; width: 100%; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="skills" class="content-section py-5">
+        <div class="container px-3 px-md-4 px-lg-5">
+            <span class="section-tag d-block">04 / Capabilities</span>
+            <h2 class="section-heading mb-4">Tech Stack & Tools</h2>
+            <div class="row g-3 g-md-4 mb-5" id="skills-container"></div>
+        </div>
+    </div>
+
+    <div id="projects" class="content-section py-5">
+        <div class="container px-3 px-md-4 px-lg-5">
+            <span class="section-tag d-block">05 / Output</span>
+            <h2 class="section-heading mb-4">Projects</h2>
+            <div class="row g-3 g-md-4" id="projects-container"></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="script.js"></script>
-
 </body>
+
 </html>
