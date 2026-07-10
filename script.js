@@ -74,7 +74,7 @@ const educationData = [
         fullName: "Bunggo Integrated School",
         years: "2022 — 2024",
         location: "Brgy. Bunggo, Calamba, Laguna",
-        bg: "image/bg bunggo IS.png", 
+        bg: "image/bg bunggo IS.png",
         logo: "image/bunggo IS.png"
     },
     {
