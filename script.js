@@ -170,7 +170,7 @@ const mySkills = [
     { name: "Git Bash", img: "Git.png", alt: "Git" },
     { name: "GitHub", img: "Github.png", alt: "GitHub" },
     { name: "Bootstrap", img: "Bootstrap.png", alt: "Bootstrap" },
-    { name: "Figma", img: "Figma.png", alt: "Figma" },
+    { name: "Figma", img: "figma.png", alt: "Figma" },
     { name: "Blender", img: "Blender.png", alt: "Blender" },
     { name: "Visual Studio Code", img: "VS Code.png", alt: "VS Code" }
 ];
