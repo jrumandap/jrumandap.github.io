@@ -204,6 +204,13 @@ const myProjects = [
         img: "image/Project2.png",
         repo: "https://github.com/jrumandap/jrumandap.github.io/tree/main/midterm",
         live: "https://jrumandap.github.io/midterm/index.html"
+    },
+    {
+        title: "OJT Project",
+        desc: "A fully deployed web system created as part of my On-the-Job Training.",
+        img: "image/Project 3.png", 
+        repo: "https://github.com/Agriculture37/Agriculture37.github.io",
+        live: "https://agriculture37.github.io/"
     }
 ];
 
