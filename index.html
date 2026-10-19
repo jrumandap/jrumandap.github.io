@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light" data-bs-theme="light">
 
 <head>
     <meta charset="utf-8">
@@ -8,26 +8,29 @@
     <link rel="icon" type="image/png" href="image/logo.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg fixed-top navbar-custom" id="siteNavbar">
-        <div class="container px-3 px-md-4 px-lg-5">
-            <a class="navbar-brand-signature text-truncate" href="#home" style="max-width: 60%;">
-                ITSMEJEAR<span>.</span>
-            </a>
+        <div class="container">
+            <a class="navbar-brand-signature" href="#home">ITSMEJEAR<span>.</span></a>
             <div class="d-flex align-items-center gap-2 order-lg-3">
-                <button class="theme-toggle-btn" id="themeToggle" aria-label="Toggle Interface Theme">
+                <button class="icon-btn" id="themeToggle" type="button" aria-label="Toggle Interface Theme">
                     <i class="bi bi-moon-stars-fill"></i>
                 </button>
-                <button class="navbar-toggler border-0 p-1" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#siteNavFields">
-                    <i class="bi bi-list navbar-toggler-icon-custom"></i>
+                <button class="icon-btn d-lg-none" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#siteNavFields" aria-controls="siteNavFields" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <i class="bi bi-list"></i>
                 </button>
             </div>
             <div class="collapse navbar-collapse order-lg-2" id="siteNavFields">
-                <ul class="navbar-nav ms-auto gap-1 mt-3 mt-lg-0 text-center text-lg-start">
+                <ul class="navbar-nav ms-auto gap-lg-1">
                     <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
                     <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
@@ -38,161 +41,144 @@
         </div>
     </nav>
 
-    <button id="scrollUpBtn" class="scroll-btn-hidden" aria-label="Scroll to top">
-        <i class="bi bi-arrow-up-short"></i>
-    </button>
-
-    <div id="home" class="hero-section py-5 mt-5">
-        <div class="container px-3 px-md-4 px-lg-5">
-            <div class="row g-4 g-lg-5 align-items-center">
-                <div class="col-12 col-lg-7 text-start text-lg-start">
-                    <span class="section-tag mb-1 mt-5 d-block">01 / Welcome</span>
-                    <h1 class="hero-title display-4 fw-bold">Hello, It's me</h1>
-                    <h1 class="hero-title display-4 fw-bold"><span class="hero-gradient-text">Jay-R Umandap</span></h1>
-                    <h2 class="fs-4 text-secondary-custom fw-normal mb-4">
-                        <span class="badge-status mb-3 d-inline-block">IT STUDENT</span>
-                    </h2>
-                    <p class="text-secondary-custom lh-lg mb-4 mx-auto mx-lg-0 style-desc"
-                        style="max-width: 100%; width: 610px;">
-                        Passionate about web development and continuously learning to build responsive websites
-                        and interactive user interfaces.</p>
-                    <div class="d-flex flex-row gap-2 gap-sm-3 justify-content-center justify-content-lg-start mb-4 w-100"
-                        style="max-width: 450px;">
-                        <a href="#about"
-                            class="btn btn-primary-custom py-2 px-2 px-sm-4 rounded-pill fw-semibold text-center flex-fill">
-                            <i class="bi bi-person me-1 me-sm-2"></i>About Me
-                        </a>
-                        <a href="#projects"
-                            class="btn btn-outline-custom-hero py-2 px-2 px-sm-4 rounded-pill fw-semibold text-center flex-fill">
-                            <i class="bi bi-briefcase me-1 me-sm-2"></i>View Projects
-                        </a>
-                    </div>
-                    <div class="social-grid d-flex flex-wrap gap-2 justify-content-center justify-content-lg-start">
-                        <a href="https://www.facebook.com/share/1DFDwpX1BJ/" target="_blank" class="social-pill"><i
-                                class="bi bi-facebook"></i></a>
-                        <a href="https://github.com/jrumandap" target="_blank" class="social-pill"><i
-                                class="bi bi-github"></i></a>
-                        <a href="https://www.instagram.com/ser_jear" target="_blank" class="social-pill"><i
-                                class="bi bi-instagram"></i></a>
-                        <a href="https://www.tiktok.com/@akosibossjayr" target="_blank" class="social-pill"><i
-                                class="bi bi-tiktok"></i></a>
-                    </div>
-                </div>
-
-                <div class="col-12 col-lg-5 text-center text-lg-end mb-4 mb-lg-0">
-                    <div class="avatar-container d-inline-block position-relative"
-                        style="max-width: 350px; width: 100%;">
-                        <div class="avatar-glow-ring"></div>
-                        <img src="image/profile.png" class="hero-avatar img-fluid integrated-interactive-avatar"
-                            alt="Profile Image" tabindex="0">
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-    
-    <div id="about" class="content-section py-5">
-        <div class="container px-3 px-md-4 px-lg-5">
-            <span class="section-tag d-block mb-2">02 / Profile</span>
-            <h2 class="section-heading mb-4">About Me</h2>
-            <div class="row g-4 align-items-center mt-2">
-                <div class="col-12 col-lg-7 text-start text-lg-start">
-                    <p class="text-secondary-custom lh-lg mb-0" style="font-size: 1.05rem;">I am <strong
-                            style="color: var(--text-heading);">Jay-R Umandap</strong>, an DIT student at the <span
-                            class="text-primary fw-semibold">Polytechnic University of the Philippines - Sto. Tomas
-                            Campus</span>.
-                        Right now, I am continuously expanding my knowledge in web development by learning new
-                        programming languages, frameworks, and development tools. I enjoy creating clean, responsive,
-                        and user-friendly web experiences while growing my skills to become a professional web
-                        developer.</p>
-                </div>
-                <div class="col-12 col-lg-5">
-                    <div class="d-flex flex-column gap-3 ps-0 ps-lg-4">
-                        <div class="coordinate-pill p-3 d-flex align-items-center gap-3 w-100">
-                            <div class="pill-icon-box d-flex align-items-center justify-content-center flex-shrink-0"><i
-                                    class="bi bi-geo-alt"></i></div>
-                            <div class="text-start">
-                                <small class="text-secondary-custom d-block"
-                                    style="font-size: 0.75rem; letter-spacing: 0.5px;">LOCATION</small>
-                                <p class="fw-bold m-0" style="color: var(--text-heading); font-size: 0.95rem;">Tanauan,
-                                    Batangas</p>
-                            </div>
+    <main>
+        <section id="home" class="hero-section">
+            <div class="container">
+                <div class="row g-5 align-items-center">
+                    <div class="col-12 col-lg-7 order-2 order-lg-1 text-center text-lg-start">
+                        <span class="section-tag">01 / Welcome</span>
+                        <h1 class="hero-title">
+                            <span class="hero-hello">Hello, It's me</span>
+                            <span class="hero-name">
+                                <span class="hero-first">Jay-R</span> 
+                                <span class="hero-last">Umandap</span>
+                            </span>
+                        </h1>
+                        <span class="badge-status">IT STUDENT</span>
+                        <p class="hero-desc">
+                            IT student passionate about web development, creating responsive websites, and building
+                            user-friendly digital experiences while continuously improving my technical skills.
+                        </p>
+                        <div class="hero-actions">
+                            <a href="#about" class="btn-ui btn-ui-solid"><i class="bi bi-person"></i>About Me</a>
+                            <a href="#projects" class="btn-ui btn-ui-outline"><i class="bi bi-briefcase"></i>View Projects</a>
                         </div>
-                        <div class="coordinate-pill p-3 d-flex align-items-center gap-3 w-100">
-                            <div class="pill-icon-box d-flex align-items-center justify-content-center flex-shrink-0"><i
-                                    class="bi bi-envelope"></i></div>
-                            <div class="text-start text-truncate">
-                                <small class="text-secondary-custom d-block"
-                                    style="font-size: 0.75rem; letter-spacing: 0.5px;">EMAIL</small>
-                                <p class="fw-bold m-0 text-truncate"
-                                    style="color: var(--text-heading); font-size: 0.95rem;">
-                                    jayrumandap0@gmail.com</p>
+                        <div class="social-grid">
+                            <a href="https://www.facebook.com/share/1DFDwpX1BJ/" target="_blank"
+                                rel="noopener noreferrer" class="social-pill" aria-label="Facebook"><i
+                                    class="bi bi-facebook"></i></a>
+                            <a href="https://github.com/jrumandap" target="_blank" rel="noopener noreferrer"
+                                class="social-pill" aria-label="GitHub"><i class="bi bi-github"></i></a>
+                            <a href="https://www.instagram.com/ser_jear" target="_blank" rel="noopener noreferrer"
+                                class="social-pill" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                            <a href="https://www.tiktok.com/@akosibossjayr" target="_blank" rel="noopener noreferrer"
+                                class="social-pill" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-lg-5 order-1 order-lg-2 text-center text-lg-end">
+                        <div class="avatar-frame">
+                            <img src="image/profile.png" class="hero-avatar" alt="Profile Image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="content-section">
+            <div class="container">
+                <span class="section-tag">02 / Profile</span>
+                <h2 class="section-heading">About Me</h2>
+                <div class="row g-4 align-items-center">
+                    <div class="col-12 col-lg-7">
+                        <p class="about-text">
+                            I am <strong>Jay-R Umandap</strong>, an Information Technology student pursuing a Diploma in
+                            Information Technology (DIT) at the
+                            <span class="text-accent fw-semibold">Polytechnic University of the Philippines - Sto. Tomas Campus</span>.
+                            I am passionate about web development and continuously improving my technical skills by
+                            exploring new programming languages, frameworks, and development tools. I enjoy building
+                            clean, responsive, and user-friendly websites while developing my problem-solving abilities
+                            and gaining practical experience. My goal is to become a professional web developer and
+                            create meaningful digital solutions through technology.
+                        </p>
+                    </div>
+                    <div class="col-12 col-lg-5">
+                        <div class="d-flex flex-column gap-3">
+                            <div class="info-card">
+                                <div class="info-icon"><i class="bi bi-geo-alt"></i></div>
+                                <div class="info-body">
+                                    <small>LOCATION</small>
+                                    <p>Tanauan, Batangas</p>
+                                </div>
+                            </div>
+                            <div class="info-card">
+                                <div class="info-icon"><i class="bi bi-envelope"></i></div>
+                                <div class="info-body">
+                                    <small>EMAIL</small>
+                                    <p>jayrumandap0@gmail.com</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+        </section>
 
-    <div id="education" class="content-section py-5">
-        <div class="container px-3 px-md-4 px-lg-5">
-            <span class="section-tag d-block">03 / History</span>
-            <h2 class="section-heading mb-4">Education</h2>
-            <div class="row g-4">
-                <div class="col-12 col-lg-5">
-                    <div class="list-group educ-list-group" id="educTabs" role="tablist"></div>
-                </div>
-                <div class="col-12 col-lg-7">
-                    <div class="tab-content" id="educTabContent" style="min-height: 200px; height: 100%;"></div>
+        <section id="education" class="content-section education-scroll">
+            <div class="educ-sticky">
+                <div class="container">
+                    <span class="section-tag">03 / History</span>
+                    <h2 class="section-heading">Education</h2>
+                    <div class="row g-4 justify-content-center">
+                        <div class="col-12 col-xl-10">
+                            <div class="list-group educ-list-group" id="educTabs" role="tablist"></div>
+                        </div>
+                        <div class="col-12 col-xl-10">
+                            <div class="tab-content" id="educTabContent"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
+        </section>
 
-    <div class="modal fade" id="schoolLogoModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-sm modal-md-normal">
-            <div class="modal-content bg-body border">
-                <div class="modal-header border-0">
-                    <h5 class="modal-title fw-bold" id="schoolModalTitle">School Name</h5>
+        <section id="skills" class="content-section">
+            <div class="container">
+                <span class="section-tag">04 / Capabilities</span>
+                <h2 class="section-heading">Tech Stack & Tools</h2>
+                <div class="row g-3" id="skills-container"></div>
+            </div>
+        </section>
+
+        <section id="projects" class="content-section">
+            <div class="container">
+                <span class="section-tag">05 / Output</span>
+                <h2 class="section-heading">Projects</h2>
+                <div class="row g-4 justify-content-center" id="projects-container"></div>
+            </div>
+        </section>
+    </main>
+
+    <div class="modal fade" id="schoolLogoModal" tabindex="-1" aria-labelledby="schoolModalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-sm">
+            <div class="modal-content">
+                <div class="modal-header border-0 pb-0">
+                    <h5 class="modal-title" id="schoolModalTitle">School Name</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body text-center p-3 p-md-4">
-                    <img id="schoolModalImg" src="" alt="School Logo" class="img-fluid"
-                        style="max-height: 250px; object-fit: contain; width: 100%;">
+                <div class="modal-body text-center p-4">
+                    <img id="schoolModalImg" src="" alt="School Logo" class="school-modal-img">
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="modal fade" id="viewModal" tabindex="-1" aria-hidden="true">
+    <div class="modal fade" id="viewModal" tabindex="-1" aria-label="Project preview" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-xl px-2">
-            <div class="modal-content bg-transparent border-0">
-                <div class="modal-body p-1 position-relative text-center">
-                    <button type="button" class="btn-close position-absolute top-0 end-0 m-2" data-bs-dismiss="modal"
-                        aria-label="Close"
-                        style="z-index: 10; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));"></button>
-                    <img id="modalTargetImg" class="img-fluid rounded" alt="Project Preview"
-                        style="max-height: 80vh; object-fit: contain; width: 100%; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
-                </div>
+            <div class="modal-content preview-content">
+                <button type="button" class="btn-close preview-close" data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+                <img id="modalTargetImg" class="preview-img" alt="Project Preview">
             </div>
-        </div>
-    </div>
-
-    <div id="skills" class="content-section py-5">
-        <div class="container px-3 px-md-4 px-lg-5">
-            <span class="section-tag d-block">04 / Capabilities</span>
-            <h2 class="section-heading mb-4">Tech Stack & Tools</h2>
-            <div class="row g-3 g-md-4 mb-5" id="skills-container"></div>
-        </div>
-    </div>
-
-    <div id="projects" class="content-section py-5">
-        <div class="container px-3 px-md-4 px-lg-5">
-            <span class="section-tag d-block">05 / Output</span>
-            <h2 class="section-heading mb-4">Projects</h2>
-            <div class="row g-3 g-md-4" id="projects-container"></div>
         </div>
     </div>
 
