@@ -1,0 +1,312 @@
+.hero-section {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: 100vh;
+    padding: 104px 0 64px;
+    overflow: hidden;
+    background-color: #ffffff;
+    background-image: radial-gradient(
+        circle at 90% 10%,
+        #e8f0fe,
+        transparent 45%
+    );
+}
+
+.hero-section .container {
+    width: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+.section-tag {
+    display: block;
+    margin-bottom: 10px;
+    color: #2563eb;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.hero-title {
+    display: block;
+    margin-bottom: 20px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    line-height: 1.05;
+}
+
+.hero-hello {
+    display: block;
+    margin-bottom: 10px;
+    color: #5b6b82;
+    font-size: clamp(17px, 2.2vw, 22px);
+    font-weight: 500;
+}
+
+.hero-name {
+    display: block;
+    font-size: clamp(42px, 8vw, 76px);
+}
+
+.hero-first,
+.hero-last {
+    display: block;
+}
+
+.hero-first {
+    color: #0f172a;
+}
+
+.hero-last {
+    color: #2563eb;
+}
+
+.hero-desc {
+    max-width: 544px;
+    margin: 0 auto 32px;
+    color: #5b6b82;
+    font-size: 17px;
+}
+
+.hero-actions {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    max-width: 416px;
+    margin: 0 auto 28px;
+}
+
+.hero-actions .btn-ui {
+    flex: 1 1 0;
+    padding-right: 12px;
+    padding-left: 12px;
+}
+
+.social-grid {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.social-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border: 1px solid #d8e0eb;
+    border-radius: 50%;
+    background-color: #ffffff;
+    color: #0f172a;
+    font-size: 18px;
+    text-decoration: none;
+    transition: 0.2s ease;
+}
+
+.social-pill:hover {
+    transform: translateY(-2px);
+    border-color: #2563eb;
+    background-color: #2563eb;
+    color: #ffffff;
+}
+
+.avatar-frame {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    max-width: 330px;
+    margin: 0 16px 16px 0;
+}
+
+.avatar-frame::before {
+    position: absolute;
+    inset: 16px -16px -16px 16px;
+    z-index: 0;
+    border: 1px solid #a8c4fb;
+    border-radius: 28px;
+    background-color: #e8f0fe;
+    content: "";
+}
+
+.hero-avatar {
+    position: relative;
+    z-index: 1;
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    object-position: center top;
+    border: 1px solid #d8e0eb;
+    border-radius: 24px;
+    box-shadow: 0 4px 16px rgba(15, 23, 42, 0.10);
+}
+
+.badge-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 20px;
+    padding: 7px 16px;
+    border: 1px solid #b7cdf8;
+    border-radius: 30px;
+    background-color: #e8f0fe;
+    color: #2563eb;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.badge-status::before {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background-color: #2563eb;
+    content: "";
+}
+
+.hero-section::before {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-image:
+        linear-gradient(rgba(37, 99, 235, 0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(37, 99, 235, 0.07) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(ellipse at 80% 30%, #000000, transparent 75%);
+    content: "";
+    pointer-events: none;
+}
+
+.hero-section .col-lg-7,
+.hero-section .col-lg-5 {
+    animation: rise 0.7s ease both;
+}
+
+.hero-section .col-lg-5 {
+    animation-delay: 0.12s;
+}
+
+@media (min-width: 992px) {
+    .hero-desc {
+        margin-left: 0;
+    }
+    .hero-actions {
+        justify-content: flex-start;
+        margin-left: 0;
+    }
+    .social-grid {
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .hero-section {
+        padding-top: 88px;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 991.98px) {
+    .hero-desc {
+        max-width: 608px;
+    }
+    .avatar-frame {
+        max-width: 300px;
+    }
+    .hero-section {
+        min-height: auto;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .hero-section {
+        min-height: auto;
+        padding-bottom: 40px;
+    }
+    .avatar-frame {
+        max-width: 215px;
+        margin: 0 12px 12px 0;
+    }
+    .avatar-frame::before {
+        inset: 12px -12px -12px 12px;
+    }
+    .hero-actions {
+        max-width: none;
+    }
+    .btn-ui {
+        font-size: 14px;
+    }
+    .btn-ui-sm {
+        gap: 5px;
+        padding: 10px 6px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 380px) {
+    .hero-actions .btn-ui i,
+    .btn-ui-sm i {
+        display: none;
+    }
+    .btn-ui {
+        padding-right: 10px;
+        padding-left: 10px;
+        font-size: 13px;
+    }
+    .navbar-brand-signature {
+        font-size: 18px;
+    }
+}
+
+@media (max-height: 500px) and (orientation: landscape) {
+    .hero-section {
+        min-height: auto;
+        padding-top: 88px;
+    }
+}
+
+[data-theme="dark"] .hero-section {
+    background-color: #0b1220;
+    background-image: radial-gradient(
+        circle at 90% 10%,
+        rgba(96, 165, 250, 0.14),
+        transparent 45%
+    );
+}
+
+[data-theme="dark"] .hero-section::before {
+    background-image:
+        linear-gradient(rgba(148, 163, 184, 0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(148, 163, 184, 0.07) 1px, transparent 1px);
+}
+
+[data-theme="dark"] .hero-first {
+    color: #f8fafc;
+}
+
+[data-theme="dark"] .hero-last {
+    color: #60a5fa;
+}
+
+[data-theme="dark"] .hero-hello,
+[data-theme="dark"] .hero-desc {
+    color: #94a3b8;
+}
+
+[data-theme="dark"] .avatar-frame::before {
+    border-color: #3b5275;
+    background-color: #1a2640;
+}
+
+[data-theme="dark"] .hero-avatar {
+    border-color: #243049;
+}
+
+[data-theme="dark"] .badge-status {
+    border-color: #3b5275;
+    background-color: #1a2640;
+    color: #60a5fa;
+}
+
+[data-theme="dark"] .badge-status::before {
+    background-color: #60a5fa;
+}
