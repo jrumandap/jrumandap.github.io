@@ -216,3 +216,228 @@ function openSchoolModal(title, imgSrc) {
     imgEl.alt = title + " logo";
     bootstrap.Modal.getOrCreateInstance(modalEl).show();
 }
+
+function renderSkills() {
+    const container = document.getElementById("skills-container");
+    if (!container) return;
+
+    container.innerHTML = mySkills.map(skill => `
+        <div class="col-6 col-md-4 col-lg-3">
+            <div class="skill-card">
+                <img src="image/${skill.img}" class="skill-icon" alt="${skill.alt}" loading="lazy"
+                    onerror="this.style.visibility='hidden';">
+                <h3 class="skill-name">${skill.name}</h3>
+            </div>
+        </div>`).join("");
+}
+
+function renderProjects() {
+    const container = document.getElementById("projects-container");
+    if (!container) return;
+
+    container.innerHTML = myProjects.map(project => `
+        <div class="col-12 col-md-6 col-xl-4 d-flex">
+            <article class="project-card">
+                <div class="project-frame">
+                    <div class="project-bar" aria-hidden="true"><span></span><span></span><span></span></div>
+                    <button type="button" class="project-media ratio" data-bs-toggle="modal"
+                        data-bs-target="#viewModal" data-preview="${project.img}"
+                        aria-label="Preview ${project.title}">
+                        <img src="${project.img}" alt="${project.title} Preview" loading="lazy"
+                            onerror="this.style.display='none';">
+                    </button>
+                </div>
+                <div class="project-body">
+                    <h3 class="project-title">${project.title}</h3>
+                    <p class="project-desc">${project.desc}</p>
+                    <div class="project-actions">
+                        <a href="${project.repo}" target="_blank" rel="noopener noreferrer"
+                            class="btn-ui btn-ui-outline btn-ui-sm">Documents</a>
+                        <a href="${project.live}" target="_blank" rel="noopener noreferrer"
+                            class="btn-ui btn-ui-solid btn-ui-sm">View Project
+                            <i class="bi bi-box-arrow-up-right"></i></a>
+                    </div>
+                </div>
+            </article>
+        </div>`).join("");
+}
+
+function initializeModals() {
+    const container = document.getElementById("projects-container");
+    if (!container) return;
+    container.addEventListener("click", event => {
+        const trigger = event.target.closest("[data-preview]");
+        if (trigger) triggerViewer(trigger.dataset.preview);
+    });
+}
+
+function triggerViewer(src) {
+    const modalImg = document.getElementById("modalTargetImg");
+    if (modalImg) modalImg.src = src;
+}
+
+function initializeReveal() {
+    if (!("IntersectionObserver" in window) ||
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    let lastY = window.scrollY;
+    let direction = "down";
+    window.addEventListener("scroll", () => {
+        const y = window.scrollY;
+        if (y !== lastY) direction = y > lastY ? "down" : "up";
+        lastY = y;
+    }, { passive: true });
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            const el = entry.target;
+            if (entry.isIntersecting) {
+                el.classList.toggle("from-top", direction === "up");
+                el.classList.add("in");
+            } else {
+                // leaving: park it on the side it exits so it re-enters smoothly
+                el.classList.toggle("from-top", entry.boundingClientRect.top > 0 ? false : true);
+                el.classList.remove("in");
+            }
+        });
+    }, { threshold: 0.1, rootMargin: "0px 0px -30px 0px" });
+
+    const groups = [
+        ".content-section .section-tag, .section-heading",
+        "#about .row > div",
+        "#skills-container > div",
+        "#projects-container > div"
+    ];
+    groups.forEach(selector => {
+        try {
+            document.querySelectorAll(selector).forEach((el, i) => {
+                el.classList.add("reveal");
+                el.style.transitionDelay = (i % 4) * 70 + "ms";
+                observer.observe(el);
+            });
+        } catch (e) { /* unsupported selector: leave content visible */ }
+    });
+}
+
+function initializeBubbles() {
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const seeds = [
+        [90, 6, 12, 0, 11], [34, 18, 70, 2, 9], [60, 30, 38, 1, 13], [22, 46, 14, 3, 8],
+        [110, 62, 66, 0, 14], [28, 78, 24, 2, 10], [52, 90, 80, 1, 12], [18, 55, 88, 4, 9]
+    ];
+    document.querySelectorAll(".hero-section, .content-section").forEach((section, s) => {
+        const wrap = document.createElement("div");
+        wrap.className = "bubbles";
+        wrap.setAttribute("aria-hidden", "true");
+        seeds.forEach(([size, left, top, delay, dur], i) => {
+            const b = document.createElement("span");
+            b.className = "bubble";
+            const shift = ((s * 17 + i * 13) % 20) - 10; // vary layout per section
+            b.style.cssText = "width:" + size + "px;height:" + size + "px;left:" +
+                Math.min(94, Math.max(0, left + shift)) + "%;top:" +
+                Math.min(90, Math.max(2, top + shift)) + "%;animation-delay:-" + delay + "s;animation-duration:" + dur + "s;";
+            if (reduce) b.style.animation = "none";
+            wrap.appendChild(b);
+        });
+        section.appendChild(wrap);
+    });
+}
+
+function initializeJoystick() {
+    const up = document.getElementById("joyUp");
+    const down = document.getElementById("joyDown");
+    if (!up || !down) return;
+
+    const sections = ["home", "about", "education", "skills", "projects"]
+        .map(id => document.getElementById(id)).filter(Boolean);
+
+    const currentIndex = () => {
+        const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4;
+        if (atBottom) return sections.length - 1;
+        let idx = 0;
+        sections.forEach((sec, i) => { if (sec.getBoundingClientRect().top <= 140) idx = i; });
+        return idx;
+    };
+    const go = step => {
+        const target = sections[Math.min(sections.length - 1, Math.max(0, currentIndex() + step))];
+        if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+    };
+    const update = () => {
+        const i = currentIndex();
+        up.disabled = i === 0 && window.scrollY < 10;
+        down.disabled = i === sections.length - 1;
+    };
+
+    up.addEventListener("click", () => {
+        const sec = sections[currentIndex()];
+        // if we are partway into a section, first return to its top
+        if (sec && sec.getBoundingClientRect().top < -40) sec.scrollIntoView({ behavior: "smooth", block: "start" });
+        else go(-1);
+    });
+    down.addEventListener("click", () => go(1));
+    window.addEventListener("scroll", update, { passive: true });
+    update();
+}
+
+function initializeEducationScroll() {
+    const section = document.getElementById("education");
+    const sticky = section && section.querySelector(".educ-sticky");
+    const tabs = document.querySelectorAll('#educTabs [data-bs-toggle="list"]');
+    if (!section || !sticky || !tabs.length || !window.bootstrap) return;
+
+    document.querySelectorAll(".educ-dots").forEach(el => el.remove()); // never duplicate the dots
+    const mq = window.matchMedia("(prefers-reduced-motion: no-preference) and (((min-width: 992px) and (min-height: 700px)) or ((max-width: 991.98px) and (min-height: 640px)))");
+    const n = tabs.length;
+    section.style.setProperty("--slides", n);
+
+    // round progress dots
+    const dotsWrap = document.createElement("div");
+    dotsWrap.className = "educ-dots";
+    dotsWrap.setAttribute("role", "group");
+    dotsWrap.setAttribute("aria-label", "Education slides");
+    const dots = Array.from(tabs).map((tab, i) => {
+        const d = document.createElement("button");
+        d.type = "button";
+        d.className = "educ-dot" + (i === 0 ? " active" : "");
+        d.setAttribute("aria-label", "Show " + tab.querySelector("strong").textContent);
+        d.addEventListener("click", () => goTo(i));
+        dotsWrap.appendChild(d);
+        return d;
+    });
+    const container = sticky.querySelector(".container");
+    if (container) container.appendChild(dotsWrap);
+
+    let current = 0;
+    const range = () => section.offsetHeight - window.innerHeight;
+
+    function goTo(i) {
+        if (!mq.matches) { bootstrap.Tab.getOrCreateInstance(tabs[i]).show(); return; }
+        const top = window.scrollY + section.getBoundingClientRect().top;
+        window.scrollTo({ top: top + ((i + 0.5) / n) * range(), behavior: "smooth" });
+    }
+
+    tabs.forEach((tab, i) => {
+        tab.addEventListener("shown.bs.tab", () => {
+            current = i;
+            dots.forEach((d, k) => d.classList.toggle("active", k === i));
+            // keep the active tab visible inside the swipeable tab row
+            const list = tab.parentElement;
+            if (list && list.scrollWidth > list.clientWidth) {
+                list.scrollTo({ left: tab.offsetLeft - (list.clientWidth - tab.offsetWidth) / 2, behavior: "smooth" });
+            }
+        });
+        tab.addEventListener("click", () => { if (mq.matches) goTo(i); });
+    });
+
+    const onScroll = () => {
+        if (!mq.matches || range() <= 0) return;
+        const p = Math.min(0.9999, Math.max(0, -section.getBoundingClientRect().top / range()));
+        const idx = Math.floor(p * n);
+        if (idx !== current) {
+            current = idx;
+            bootstrap.Tab.getOrCreateInstance(tabs[idx]).show();
+        }
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+}
