@@ -83,6 +83,7 @@ const myProjects = [
 document.addEventListener("DOMContentLoaded", () => {
     initializeTheme();
     initializeScrollTracking();
+    initializeMobileScrollHide();
     renderEducation();
     renderSkills();
     renderProjects();
@@ -95,32 +96,46 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function initializeTheme() {
     const themeToggle = document.getElementById("themeToggle");
-    if (!themeToggle) return;
+    const themeToggleMobile = document.getElementById("themeToggleMobile");
 
-    const icon = themeToggle.querySelector("i");
     let savedTheme = "light";
     try { savedTheme = localStorage.getItem("portfolio-theme") || "light"; } catch (e) { /* storage blocked */ }
 
     applyTheme(savedTheme);
 
-    themeToggle.addEventListener("click", () => {
-        const next = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
-        applyTheme(next);
-        try { localStorage.setItem("portfolio-theme", next); } catch (e) { /* storage blocked */ }
-    });
+    function toggleTheme() {
+        const currentTheme = document.documentElement.getAttribute("data-theme");
+        const nextTheme = currentTheme === "dark" ? "light" : "dark";
+        applyTheme(nextTheme);
+        try { localStorage.setItem("portfolio-theme", nextTheme); } catch (e) { /* storage blocked */ }
+    }
+
+    if (themeToggle) themeToggle.addEventListener("click", toggleTheme);
+    if (themeToggleMobile) themeToggleMobile.addEventListener("click", toggleTheme);
 
     function applyTheme(theme) {
         document.documentElement.setAttribute("data-theme", theme);
         document.documentElement.setAttribute("data-bs-theme", theme);
-        if (icon) icon.className = theme === "light" ? "bi bi-sun-fill" : "bi bi-moon-stars-fill";
+
+        const iconClass = theme === "light" ? "bi bi-sun-fill" : "bi bi-moon-stars-fill";
+
+        if (themeToggle) {
+            const icon = themeToggle.querySelector("i");
+            if (icon) icon.className = iconClass;
+        }
+        if (themeToggleMobile) {
+            const mobileIcon = themeToggleMobile.querySelector("i");
+            if (mobileIcon) mobileIcon.className = iconClass;
+        }
     }
 }
 
 function initializeScrollTracking() {
-    const scrollUpBtn = document.getElementById("scrollUpBtn");
     const navbar = document.getElementById("siteNavbar");
-    const links = document.querySelectorAll("#siteNavFields .nav-link");
-    const sections = Array.from(links)
+    const desktopLinks = document.querySelectorAll("#siteNavFields .nav-link");
+    const mobileLinks = document.querySelectorAll("#mobileBottomNav .mobile-nav-link:not(.theme-btn-mobile)");
+
+    const sections = Array.from(desktopLinks)
         .map(link => document.querySelector(link.getAttribute("href")))
         .filter(Boolean);
 
@@ -130,31 +145,48 @@ function initializeScrollTracking() {
 
         let current = sections.length ? sections[0].id : "";
         sections.forEach(sec => {
-            if (sec.getBoundingClientRect().top <= 120) current = sec.id;
+            if (sec.getBoundingClientRect().top <= 140) current = sec.id;
         });
-        links.forEach(link => {
+
+        desktopLinks.forEach(link => {
             const active = link.getAttribute("href") === "#" + current;
             link.classList.toggle("active", active);
-            if (active) link.setAttribute("aria-current", "true");
-            else link.removeAttribute("aria-current");
+        });
+
+        mobileLinks.forEach(link => {
+            const active = link.getAttribute("href") === "#" + current;
+            link.classList.toggle("active", active);
         });
     };
 
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
+}
 
-    if (scrollUpBtn) {
-        scrollUpBtn.addEventListener("click", () => {
-            window.scrollTo({ top: 0, behavior: "smooth" });
-        });
-    }
+function initializeMobileScrollHide() {
+    const mobileNav = document.getElementById("mobileBottomNav");
+    if (!mobileNav) return;
 
-    const menu = document.getElementById("siteNavFields");
-    links.forEach(link => link.addEventListener("click", () => {
-        if (menu && menu.classList.contains("show") && window.bootstrap) {
-            bootstrap.Collapse.getOrCreateInstance(menu).hide();
+    let lastScrollTop = 0;
+
+    window.addEventListener("scroll", () => {
+        let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+        if (scrollTop < 10) {
+            mobileNav.classList.remove("nav-hidden");
+            return;
         }
-    }));
+
+        if (scrollTop > lastScrollTop) {
+            // Nag-scroll pababa -> ITAGO
+            mobileNav.classList.add("nav-hidden");
+        } else {
+            // Nag-scroll pataas -> IPAKITA
+            mobileNav.classList.remove("nav-hidden");
+        }
+
+        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+    }, { passive: true });
 }
 
 function renderEducation() {
@@ -295,7 +327,6 @@ function initializeReveal() {
                 el.classList.toggle("from-top", direction === "up");
                 el.classList.add("in");
             } else {
-                // leaving: park it on the side it exits so it re-enters smoothly
                 el.classList.toggle("from-top", entry.boundingClientRect.top > 0 ? false : true);
                 el.classList.remove("in");
             }
@@ -315,7 +346,7 @@ function initializeReveal() {
                 el.style.transitionDelay = (i % 4) * 70 + "ms";
                 observer.observe(el);
             });
-        } catch (e) { /* unsupported selector: leave content visible */ }
+        } catch (e) { /* unsupported selector */ }
     });
 }
 
@@ -332,7 +363,7 @@ function initializeBubbles() {
         seeds.forEach(([size, left, top, delay, dur], i) => {
             const b = document.createElement("span");
             b.className = "bubble";
-            const shift = ((s * 17 + i * 13) % 20) - 10; // vary layout per section
+            const shift = ((s * 17 + i * 13) % 20) - 10;
             b.style.cssText = "width:" + size + "px;height:" + size + "px;left:" +
                 Math.min(94, Math.max(0, left + shift)) + "%;top:" +
                 Math.min(90, Math.max(2, top + shift)) + "%;animation-delay:-" + delay + "s;animation-duration:" + dur + "s;";
@@ -370,7 +401,6 @@ function initializeJoystick() {
 
     up.addEventListener("click", () => {
         const sec = sections[currentIndex()];
-        // if we are partway into a section, first return to its top
         if (sec && sec.getBoundingClientRect().top < -40) sec.scrollIntoView({ behavior: "smooth", block: "start" });
         else go(-1);
     });
@@ -385,12 +415,11 @@ function initializeEducationScroll() {
     const tabs = document.querySelectorAll('#educTabs [data-bs-toggle="list"]');
     if (!section || !sticky || !tabs.length || !window.bootstrap) return;
 
-    document.querySelectorAll(".educ-dots").forEach(el => el.remove()); // never duplicate the dots
+    document.querySelectorAll(".educ-dots").forEach(el => el.remove());
     const mq = window.matchMedia("(prefers-reduced-motion: no-preference) and (((min-width: 992px) and (min-height: 700px)) or ((max-width: 991.98px) and (min-height: 640px)))");
     const n = tabs.length;
     section.style.setProperty("--slides", n);
 
-    // round progress dots
     const dotsWrap = document.createElement("div");
     dotsWrap.className = "educ-dots";
     dotsWrap.setAttribute("role", "group");
@@ -420,7 +449,6 @@ function initializeEducationScroll() {
         tab.addEventListener("shown.bs.tab", () => {
             current = i;
             dots.forEach((d, k) => d.classList.toggle("active", k === i));
-            // keep the active tab visible inside the swipeable tab row
             const list = tab.parentElement;
             if (list && list.scrollWidth > list.clientWidth) {
                 list.scrollTo({ left: tab.offsetLeft - (list.clientWidth - tab.offsetWidth) / 2, behavior: "smooth" });

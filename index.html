@@ -15,17 +15,12 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-lg fixed-top navbar-custom" id="siteNavbar">
+    <nav class="navbar navbar-expand-lg fixed-top navbar-custom d-none d-lg-block" id="siteNavbar">
         <div class="container">
             <a class="navbar-brand-signature" href="#home">ITSMEJEAR<span>.</span></a>
             <div class="d-flex align-items-center gap-2 order-lg-3">
                 <button class="icon-btn" id="themeToggle" type="button" aria-label="Toggle Interface Theme">
                     <i class="bi bi-moon-stars-fill"></i>
-                </button>
-                <button class="icon-btn d-lg-none" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#siteNavFields" aria-controls="siteNavFields" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <i class="bi bi-list"></i>
                 </button>
             </div>
             <div class="collapse navbar-collapse order-lg-2" id="siteNavFields">
@@ -38,7 +33,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#education"><i class="bi bi-mortarboard-fill me-1"></i>
-                            Education</a> 
+                            Education</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#skills"><i class="bi bi-code-slash me-1"></i> Skills</a>
@@ -49,6 +44,27 @@
                 </ul>
             </div>
         </div>
+    </nav>
+
+    <nav class="mobile-bottom-nav d-flex d-lg-none" id="mobileBottomNav">
+        <a href="#home" class="mobile-nav-link active" aria-label="Home">
+            <i class="bi bi-house-fill"></i>
+        </a>
+        <a href="#about" class="mobile-nav-link" aria-label="About">
+            <i class="bi bi-person-fill"></i>
+        </a>
+        <a href="#education" class="mobile-nav-link" aria-label="Education">
+            <i class="bi bi-mortarboard-fill"></i>
+        </a>
+        <a href="#skills" class="mobile-nav-link" aria-label="Skills">
+            <i class="bi bi-code-slash"></i>
+        </a>
+        <a href="#projects" class="mobile-nav-link" aria-label="Projects">
+            <i class="bi bi-briefcase-fill"></i>
+        </a>
+        <button class="mobile-nav-link theme-btn-mobile" id="themeToggleMobile" type="button" aria-label="Toggle Theme">
+            <i class="bi bi-moon-stars-fill"></i>
+        </button>
     </nav>
 
     <main>
