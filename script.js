@@ -164,8 +164,8 @@ function initializeScrollTracking() {
 }
 
 function initializeMobileScrollHide() {
-    const mobileNav = document.getElementById("mobileBottomNav");
-    if (!mobileNav) return;
+    const mobileHeader = document.getElementById("mobileTopHeader");
+    if (!mobileHeader) return;
 
     let lastScrollTop = 0;
 
@@ -173,16 +173,14 @@ function initializeMobileScrollHide() {
         let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
         if (scrollTop < 10) {
-            mobileNav.classList.remove("nav-hidden");
+            mobileHeader.classList.remove("nav-hidden");
             return;
         }
 
         if (scrollTop > lastScrollTop) {
-            // Nag-scroll pababa -> ITAGO
-            mobileNav.classList.add("nav-hidden");
+            mobileHeader.classList.add("nav-hidden");
         } else {
-            // Nag-scroll pataas -> IPAKITA
-            mobileNav.classList.remove("nav-hidden");
+            mobileHeader.classList.remove("nav-hidden");
         }
 
         lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;

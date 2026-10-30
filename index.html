@@ -15,6 +15,7 @@
 
 <body>
 
+    <!-- Desktop Navbar -->
     <nav class="navbar navbar-expand-lg fixed-top navbar-custom d-none d-lg-block" id="siteNavbar">
         <div class="container">
             <a class="navbar-brand-signature" href="#home">ITSMEJEAR<span>.</span></a>
@@ -46,6 +47,15 @@
         </div>
     </nav>
 
+    <!-- Mobile Top Header (Ito yung nag-hihide kapag nag-scroll pababa) -->
+    <header class="mobile-top-header d-flex d-lg-none align-items-center justify-content-between px-3 fixed-top" id="mobileTopHeader">
+        <a class="navbar-brand-signature" href="#home">ITSMEJEAR<span>.</span></a>
+        <button class="icon-btn" id="themeToggleMobile" type="button" aria-label="Toggle Interface Theme">
+            <i class="bi bi-moon-stars-fill"></i>
+        </button>
+    </header>
+
+    <!-- Mobile Bottom Nav (Fixed at HINDI nawawala sa baba) -->
     <nav class="mobile-bottom-nav d-flex d-lg-none" id="mobileBottomNav">
         <a href="#home" class="mobile-nav-link active" aria-label="Home">
             <i class="bi bi-house-fill"></i>
@@ -62,9 +72,6 @@
         <a href="#projects" class="mobile-nav-link" aria-label="Projects">
             <i class="bi bi-briefcase-fill"></i>
         </a>
-        <button class="mobile-nav-link theme-btn-mobile" id="themeToggleMobile" type="button" aria-label="Toggle Theme">
-            <i class="bi bi-moon-stars-fill"></i>
-        </button>
     </nav>
 
     <main>

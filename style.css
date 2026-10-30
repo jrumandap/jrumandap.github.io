@@ -147,32 +147,41 @@ img {
     font-weight: 600;
 }
 
-/* Mobile Bottom Nav */
-.mobile-bottom-nav {
-    position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: calc(100% - 32px);
-    max-width: 400px;
-    background: rgba(255, 255, 255, 0.88);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(216, 224, 235, 0.8);
-    border-radius: 35px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding: 8px 14px;
-    z-index: 1050;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+/* Mobile Top Header (Ito yung nagh-hide kapag nag-scroll pababa) */
+.mobile-top-header {
+    height: 60px;
+    background-color: rgba(255, 255, 255, 0.96);
+    border-bottom: 1px solid #d8e0eb;
+    backdrop-filter: blur(12px);
+    z-index: 1040;
     transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.35s ease;
 }
 
-.mobile-bottom-nav.nav-hidden {
-    transform: translate(-50%, 130%);
+.mobile-top-header.nav-hidden {
+    transform: translateY(-130%);
     opacity: 0;
     pointer-events: none;
+}
+
+/* Mobile Full-Width Bottom Nav (Laging nakapirmi at HINDI nawawala) */
+.mobile-bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    max-width: 100%;
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-top: 1px solid #d8e0eb;
+    border-radius: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 8px 0;
+    z-index: 1050;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.05);
 }
 
 .mobile-nav-link {
@@ -253,13 +262,17 @@ img {
     }
 }
 
-@media (max-width: 767.98px) {
+@media (max-width: 991.98px) {
     .bubble {
         max-width: 64px;
         max-height: 64px;
     }
     html {
-        scroll-padding-top: 20px;
+        scroll-padding-top: 70px;
+    }
+    body {
+        padding-top: 60px;
+        padding-bottom: 60px;
     }
 }
 
@@ -297,7 +310,8 @@ img {
     color: #f8fafc;
 }
 
-[data-theme="dark"] .navbar-custom {
+[data-theme="dark"] .navbar-custom,
+[data-theme="dark"] .mobile-top-header {
     background-color: rgba(11, 18, 32, 0.96);
     border-color: #243049;
 }
@@ -326,7 +340,7 @@ img {
 }
 
 [data-theme="dark"] .mobile-bottom-nav {
-    background: rgba(19, 29, 49, 0.88);
+    background: rgba(19, 29, 49, 0.96);
     border-color: rgba(36, 48, 73, 0.8);
 }
 
